@@ -7,10 +7,7 @@ import TabNavigator from './components/navigation/TabNavigator.js';
 
 export default function App() {
   return (
-   
       <TabNavigator/>
-    
- 
   );
 }
 
