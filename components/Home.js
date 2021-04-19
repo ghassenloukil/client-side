@@ -1,26 +1,38 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import React, {useState} from 'react';
+// import Signup from './components/Signup.js'
 
 
 
-const Home = () =>{
+
+const Home = (props) =>{
+  const GoSignup = () =>{
+    // props.navigation.navigate('Signup')
+    console.log(props.navigation.navigate('Signup'));
+  }
     return (
       <View style={styles.container}>
-      <Image   style={{ width: 100, height: 100, marginBottom: 15 }} source={require('./parki.jpg')}/> 
-      <Text style={styles.text}>WELCOME TO PARKIZONE </Text>
+        <View style={{alignItems: 'center', justifyContent:'center'}}>
+      <Image   style={{ width: 170, height: 150,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
+      </View>
       <View style={{ width: '100%', height: '50%', marginBottom: 15 }}>
-      <Image   style={{ width: '100%', height: '100%' }} source={require('./cover.jpg')}/>  
+      <Image   style={{ width: '100%', height: '100%' }} source={require('./zone.jpg')}/>  
         </View> 
-        <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial'}}>  
-            {/* SIGNIN BUTTON   */}
+      <View style={{alignItems: 'center', justifyContent:'center'}}>
+      <Text style={styles.text}>WELCOME TO PARKIZONE!</Text>
+      <Text style={{fontWeight: 'bold',color: '#fff',}}>IN ORDER TO USE OUR APP PLEASE LOGIN OR SIGNUP</Text>
+
+      </View>
+        <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial', marginTop: 20}}>  
+          {/* SIGNIN BUTTON   */}
             <TouchableOpacity style={styles.appButtonContainer}>
               <Text style={styles.appButtonText}> Signin </Text>
            </TouchableOpacity>
       
           {/* SIGNup BUTTON   */}
-          <TouchableOpacity style={styles.appButtonContainer}>
-             <Text style={styles.appButtonText}> Signup </Text>
+          <TouchableOpacity style={styles.appButtonContainer} >
+             <Text style={styles.appButtonText} onPress={GoSignup}> Signup </Text>
            </TouchableOpacity>
       </View>
 
@@ -38,8 +50,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
-    alignItems: 'center',
-    justifyContent:'center',
+    fontFamily:'lucida grande',
+    // alignItems: 'center',
+    // justifyContent:'center',
   },
   button: {
     width: 100,
@@ -47,21 +60,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button1: {
-    backgroundColor: 'white'
+  pressButton: {
+    backgroundColor: 'red'
   },
   appButtonContainer: {
     // elevation: 8,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     borderRadius: 10,
+    border:" 1px solid white",
     paddingVertical: 10,
     // paddingHorizontal: 12
     width: 150,
-    marginRight: 10
+    marginRight: 10,
   },
   appButtonText: {
     fontSize: 18,
-    color: "black",
+    color:"white",
     fontWeight: "bold",
     alignSelf: "center",
     textTransform: "uppercase"
