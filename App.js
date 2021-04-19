@@ -7,11 +7,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/Home'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
+import Maps from './components/Maps'
+
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
-    <NavigationContainer >
+<NavigationContainer >
     <Stack.Navigator initialRouteName="Home" 
    screenOptions={{
     headerTintColor: 'white',
