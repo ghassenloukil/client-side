@@ -14,7 +14,7 @@ const Home = ({ navigation: { navigate } }) =>{
     return (
       <View style={styles.container}>
         <View style={{alignItems: 'center', justifyContent:'center'}}>
-      <Image   style={{ width: 170, height: 150,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
+      <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
       <View style={{ width: '100%', height: '50%', marginBottom: 15 }}>
       <Image   style={{ width: '100%', height: '100%' }} source={require('./zone.jpg')}/>  
@@ -27,7 +27,7 @@ const Home = ({ navigation: { navigate } }) =>{
         <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial', marginTop: 20}}>  
           {/* SIGNIN BUTTON   */}
             <TouchableOpacity style={styles.appButtonContainer}>
-              <Text style={styles.appButtonText} onPress={()=>navigate('create')}> Signin </Text>
+              <Text style={styles.appButtonText} onPress={()=>navigate('Create')}> Signin </Text>
            </TouchableOpacity>
       
           {/* SIGNup BUTTON   */}

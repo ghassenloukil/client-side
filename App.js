@@ -12,19 +12,26 @@ import Maps  from  './components/Maps'
 export default function App() {
   const Stack = createStackNavigator();
   return (
-    <NavigationContainer>
-    {/* <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
+<NavigationContainer >
+    <Stack.Navigator initialRouteName="Home" 
+   screenOptions={{
+    headerTintColor: 'white',
+    headerStyle: { backgroundColor: '#212121' },
+  }}>
+      <Stack.Screen 
+       name="Home"
+       component={HomeScreen}
+       style={{backgroundColor: 'black'}} 
+      />
       <Stack.Screen
         name="Signup"
         component={Signup}
       />
       <Stack.Screen
-        name="create"
-        component={Create}
+        name="Signin"
+        component={Signin}
       />
-    </Stack.Navigator> */}
-    <Maps/>
+    </Stack.Navigator>
   </NavigationContainer>
   );
 }
