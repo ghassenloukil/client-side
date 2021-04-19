@@ -63,16 +63,16 @@ const styles = StyleSheet.create({
   pressButton: {
     backgroundColor: 'red'
   },
-  appButtonContainer: {
-    // elevation: 8,
-    backgroundColor: "transparent",
-    borderRadius: 10,
-    border:" 1px solid white",
-    paddingVertical: 10,
-    // paddingHorizontal: 12
-    width: 150,
-    marginRight: 10,
-  },
+  // appButtonContainer: {
+  //   // elevation: 8,
+  //   backgroundColor: "transparent",
+  //   borderRadius: 10,
+  //   border:" 1px solid white",
+  //   paddingVertical: 10,
+  //   // paddingHorizontal: 12
+  //   width: 150,
+  //   marginRight: 10,
+  // },
   appButtonText: {
     fontSize: 18,
     color:"white",

@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import Maps from './Maps.js'
 import React, {useState} from 'react';
 
 const Create = () =>{
   return (
     <View style={styles.container}>
-     <Text style={styles.text}> Hello from Create</Text>
+     <Maps/>
    </View>
   );  
 }

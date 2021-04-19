@@ -7,11 +7,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/Home'
 import Signup from './components/Signup'
 import Create from './components/Create'
+import Maps  from  './components/Maps'
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
-    <NavigationContainer >
+<NavigationContainer >
     <Stack.Navigator initialRouteName="Home" 
    screenOptions={{
     headerTintColor: 'white',
@@ -27,8 +28,8 @@ export default function App() {
         component={Signup}
       />
       <Stack.Screen
-        name="Create"
-        component={Create}
+        name="Signin"
+        component={Signin}
       />
     </Stack.Navigator>
   </NavigationContainer>
