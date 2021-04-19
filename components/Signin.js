@@ -1,3 +1,29 @@
+// import { StatusBar } from 'expo-status-bar';
+// import { StyleSheet, Text, View } from 'react-native';
+// import React, {useState} from 'react';
+
+// const Create = () =>{
+//   return (
+//     <View style={styles.container}>
+//      <Text style={styles.text}> Hello from Create</Text>
+//    </View>
+//   );  
+// }
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: 'black'
+//   },
+//   text: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     color: '#fff',
+//   }
+// })
+// export default Create;
+
 import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native';
 import React, {useState} from 'react';
 
@@ -10,12 +36,11 @@ const Signup = () => {
             <View style={{alignItems: 'center', justifyContent:'center'}}>
       <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
-            <input placeholder="Username" style={{marginBottom: '3%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20, outline: 'none'}}></input>
-            <input placeholder="Email" style={{marginBottom: '4%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <input placeholder="password" style={{marginBottom: '3%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
+            <input placeholder="Email" style={{marginBottom: '4%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
+            <input placeholder="password" style={{marginBottom: '3%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
             <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText}> Signup </Text>
+             <Text style={styles.appButtonText}> Signin </Text>
            </TouchableOpacity>
            </View>
             </View>
@@ -56,3 +81,4 @@ const styles = StyleSheet.create({
 
 })
 export default Signup
+

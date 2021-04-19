@@ -27,7 +27,7 @@ const Home = ({ navigation: { navigate } }) =>{
         <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial', marginTop: 20}}>  
           {/* SIGNIN BUTTON   */}
             <TouchableOpacity style={styles.appButtonContainer}>
-              <Text style={styles.appButtonText} onPress={()=>navigate('Create')}> Signin </Text>
+              <Text style={styles.appButtonText} onPress={()=>navigate('Signin')}> Signin </Text>
            </TouchableOpacity>
       
           {/* SIGNup BUTTON   */}
