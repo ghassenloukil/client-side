@@ -1,29 +1,3 @@
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
-// import React, {useState} from 'react';
-
-// const Create = () =>{
-//   return (
-//     <View style={styles.container}>
-//      <Text style={styles.text}> Hello from Create</Text>
-//    </View>
-//   );  
-// }
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'black'
-//   },
-//   text: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     color: '#fff',
-//   }
-// })
-// export default Create;
-
 import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native';
 import React, {useState} from 'react';
 
@@ -61,12 +35,10 @@ const styles = StyleSheet.create({
         fontSize:20,
     },
     appButtonContainer: {
-        // elevation: 8,
         backgroundColor: "transparent",
         borderRadius: 10,
         border:" 1px solid white",
         paddingVertical: 10,
-        // paddingHorizontal: 12,
         width: 150,
         marginRight: 10,
         marginTop: 1
@@ -78,7 +50,7 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         textTransform: "uppercase"
       }
-
 })
+
 export default Signup
 
