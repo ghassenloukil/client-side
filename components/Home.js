@@ -6,11 +6,11 @@ import React, {useState} from 'react';
 
 
 
-const Home = (props) =>{
-  const GoSignup = () =>{
-    // props.navigation.navigate('Signup')
-    console.log(props.navigation.navigate('Signup'));
-  }
+const Home = ({ navigation: { navigate } }) =>{
+  // const GoSignup = () =>{
+  //   props.navigation.navigate('Signup')
+  //   console.log(props.navigation);
+  // }
     return (
       <View style={styles.container}>
         <View style={{alignItems: 'center', justifyContent:'center'}}>
@@ -27,12 +27,12 @@ const Home = (props) =>{
         <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial', marginTop: 20}}>  
           {/* SIGNIN BUTTON   */}
             <TouchableOpacity style={styles.appButtonContainer}>
-              <Text style={styles.appButtonText}> Signin </Text>
+              <Text style={styles.appButtonText} onPress={()=>navigate('create')}> Signin </Text>
            </TouchableOpacity>
       
           {/* SIGNup BUTTON   */}
-          <TouchableOpacity style={styles.appButtonContainer} >
-             <Text style={styles.appButtonText} onPress={GoSignup}> Signup </Text>
+          <TouchableOpacity style={styles.appButtonContainer}  >
+             <Text style={styles.appButtonText} onPress={()=>navigate('Signup')}> Signup </Text>
            </TouchableOpacity>
       </View>
 
