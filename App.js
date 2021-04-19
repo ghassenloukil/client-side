@@ -7,12 +7,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './components/Home'
 import Signup from './components/Signup'
 import Create from './components/Create'
+import Maps  from  './components/Maps'
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
+    {/* <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen
         name="Signup"
@@ -22,7 +23,8 @@ export default function App() {
         name="create"
         component={Create}
       />
-    </Stack.Navigator>
+    </Stack.Navigator> */}
+    <Maps/>
   </NavigationContainer>
   );
 }
