@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView , {Marker} from 'react-native-maps';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+
 
 export default class Maps extends React.Component {
     constructor(){
@@ -8,9 +10,11 @@ export default class Maps extends React.Component {
         this.state = {
             ready: false,
             where: {lat:null, lng:null},
-            error: null
+            error: null,
+            
         }
     }
+    
     componentDidMount(){
         let geoOptions = {
             enableHighAccuracy: true,
@@ -57,6 +61,7 @@ export default class Maps extends React.Component {
             title={"title"}
             description={"description"}
          />
+        
                   </MapView>
                    
                 )}
