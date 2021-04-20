@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput  } from 'react-native';
 import React, {useState} from 'react';
 
 
@@ -8,15 +8,17 @@ const Signup = () => {
         <View style={styles.main}>
             <View style={styles.inputs}>
             <View style={{alignItems: 'center', justifyContent:'center'}}>
-      <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
+      <Image   style={{ width: 100, height: 150, marginTop: "-10%",justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
-            <input placeholder="Email" style={{marginBottom: '4%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <input placeholder="password" style={{marginBottom: '3%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial'}}>
+      <View style={{height: '100%'}}>
+            <TextInput  placeholder="Email" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20, backgroundColor:'white'}}/>
+            <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}}/>
+            <View style={{alignItems: 'center', justifyContent:'center', marginTop: '1%'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
              <Text style={styles.appButtonText}> Signin </Text>
            </TouchableOpacity>
            </View>
+      </View>
             </View>
             
         </View>
@@ -37,7 +39,8 @@ const styles = StyleSheet.create({
     appButtonContainer: {
         backgroundColor: "transparent",
         borderRadius: 10,
-        border:" 1px solid white",
+        borderWidth: 2,
+        borderColor: 'white',
         paddingVertical: 10,
         width: 150,
         marginRight: 10,

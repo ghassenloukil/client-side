@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput } from 'react-native';
 import React, {useState} from 'react';
 
 
@@ -10,10 +10,10 @@ const Signup = () => {
             <View style={{alignItems: 'center', justifyContent:'center'}}>
       <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
-            <input placeholder="Username" style={{marginBottom: '3%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20, outline: 'none'}}></input>
-            <input placeholder="Email" style={{marginBottom: '4%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <input placeholder="password" style={{marginBottom: '3%',marginTop: '3%', height: '5%',borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial'}}>
+            <TextInput placeholder="Username" style={styles.row}/>
+            <TextInput placeholder="Email" style={styles.row}/>
+            <TextInput placeholder="password" style={styles.row}/>
+            <View style={{alignItems: 'center', justifyContent:'center'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
              <Text style={styles.appButtonText}> Signup </Text>
            </TouchableOpacity>
@@ -35,11 +35,22 @@ const styles = StyleSheet.create({
         height: '80%', 
         fontSize:20,
     },
+    row : {
+        marginBottom: '3%',
+        marginTop: '3%', 
+        height: 35,
+        borderRadius: 10, 
+        fontSize: 20, 
+        backgroundColor:'white',
+        flexDirection: "row",
+        flexWrap: "wrap",
+    },
     appButtonContainer: {
         // elevation: 8,
         backgroundColor: "transparent",
         borderRadius: 10,
-        border:" 1px solid white",
+        borderWidth: 2,
+        borderColor: 'white',
         paddingVertical: 10,
         // paddingHorizontal: 12,
         width: 150,
