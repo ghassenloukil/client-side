@@ -1,22 +1,47 @@
-import { StyleSheet, Text, View, TouchableOpacity,Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput  } from 'react-native';
 import React, {useState} from 'react';
+import axios from 'axios';
 
 
 
-const Signup = () => {
+const Signin = ({ navigation: { navigate } }) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleClick = function () {
+        var obj = { email: email, password: password };
+        // console.log(state.name , state.password)
+        axios
+          .post('http://10.0.2.2:3000/api/ParkiZone/login', obj)
+          .then((res) => {
+              if (res.data.message === "success") {
+                console.log("i'm in");
+                // console.log(localStorage.token);
+                navigate('TabNavigator')
+              } else {
+               console.log("you can not access");
+              }
+            
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
     return (
         <View style={styles.main}>
             <View style={styles.inputs}>
             <View style={{alignItems: 'center', justifyContent:'center'}}>
-      <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
+      <Image   style={{ width: 100, height: 150, marginTop: "-10%",justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
-            <input placeholder="Email" style={{marginBottom: '4%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <input placeholder="password" style={{marginBottom: '3%',marginTop: '3%', height: '5%', borderRadius: 10, fontSize: 20,outline: 'none'}}></input>
-            <View style={{alignItems: 'center', justifyContent:'center', flexDirection: 'initial'}}>
+      <View style={{height: '100%'}}>
+            <TextInput  placeholder="Email" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20, backgroundColor:'white'}} onChangeText={email => setEmail(email)} defaultValue={email}/>
+            <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}} onChangeText={password => setPassword(password)} defaultValue={password}/>
+            <View style={{alignItems: 'center', justifyContent:'center', marginTop: '1%'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText}> Signin </Text>
+             <Text style={styles.appButtonText} onPress={handleClick}> Signin </Text>
            </TouchableOpacity>
            </View>
+      </View>
             </View>
             
         </View>
@@ -37,7 +62,8 @@ const styles = StyleSheet.create({
     appButtonContainer: {
         backgroundColor: "transparent",
         borderRadius: 10,
-        border:" 1px solid white",
+        borderWidth: 2,
+        borderColor: 'white',
         paddingVertical: 10,
         width: 150,
         marginRight: 10,
@@ -52,5 +78,5 @@ const styles = StyleSheet.create({
       }
 })
 
-export default Signup
+export default Signin
 
