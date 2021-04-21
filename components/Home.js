@@ -7,10 +7,6 @@ import React, {useState} from 'react';
 
 
 const Home = ({ navigation: { navigate } }) =>{
-  // const GoSignup = () =>{
-  //   props.navigation.navigate('Signup')
-  //   console.log(props.navigation);
-  // }
     return (
       <View style={styles.container}>
         <View style={{alignItems: 'center', justifyContent:'center'}}>

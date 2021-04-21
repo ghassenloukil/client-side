@@ -1,21 +1,38 @@
 import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput } from 'react-native';
 import React, {useState} from 'react';
-
-
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const Signup = () => {
+const [username, setUsername]= useState('')
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+
+const handleSubmit = () => {
+      var userToAdd = {
+          username: username,
+          email: email,
+          password: password
+      }
+      axios.post('http://10.0.2.2:3000/api/ParkiZone/user/create',userToAdd)
+      .then((response)=>{
+     console.log("heeloo",response);
+      }).catch((error)=>{
+          console.log(error)
+      })
+    }
     return (
         <View style={styles.main}>
             <View style={styles.inputs}>
             <View style={{alignItems: 'center', justifyContent:'center'}}>
       <Image   style={{ width: 100, height: 150, marginTop: 1,justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
-            <TextInput placeholder="Username" style={styles.row}/>
-            <TextInput placeholder="Email" style={styles.row}/>
-            <TextInput placeholder="password" style={styles.row}/>
+            <TextInput placeholder="username" name="username" style={styles.row} onChangeText={username => setUsername(username)} defaultValue={username}/>
+            <TextInput placeholder="email" name="email" style={styles.row} onChangeText={email => setEmail(email)} defaultValue={email}/>
+            <TextInput placeholder="password" name="password" style={styles.row} onChangeText={password => setPassword(password)} defaultValue={password}/>
             <View style={{alignItems: 'center', justifyContent:'center'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText}> Signup </Text>
+             <Text style={styles.appButtonText} onPress={handleSubmit}> Signup </Text>
            </TouchableOpacity>
            </View>
             </View>

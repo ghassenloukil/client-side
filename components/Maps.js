@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import MapView , {Marker} from 'react-native-maps';
 
 export default class Maps extends React.Component {
@@ -35,10 +35,11 @@ export default class Maps extends React.Component {
     }
     render() {
         return (
+            <View style={{backgroundColor:"black"}}>
+      <View style={{alignItems: 'center', justifyContent:'center'}}>
+      <Image   style={{ width: 100, height: 150, marginTop: 0}} source={require('./parki.jpg')}/> 
+      </View> 
             <View style={styles.container}>
-                { !this.state.ready && (
-                <Text style={styles.big}>Using Geolocation in React Native.</Text>
-                )}
                 { this.state.error && (
                 <Text style={styles.big}>{this.state.error}</Text>
                 )}
@@ -61,24 +62,34 @@ export default class Maps extends React.Component {
                    
                 )}
             </View>
+             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject,
-        height: '100%',
+        // ...StyleSheet.absoluteFillObject,
+        // position: 'absolute',
+        left: 0,
+        right: 0,
+        // top: '20%',
+        bottom: 0,
+        height: '80%',
         width: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+        // flex: 1,
+        // marginTop: '50%',
+        // justifyContent: 'flex-end',
+        // alignItems: 'center',
+        // flex: 1,
+        // backgroundColor: '#fff',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // marginTop: 10
+
     },
     big: {
-        fontSize: 48
+        // fontSize: 48
     },
     map: {
         ...StyleSheet.absoluteFillObject,

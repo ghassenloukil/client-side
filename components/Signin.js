@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 
 
-const Signup = () => {
+const Signin = ({ navigation: { navigate } }) => {
     return (
         <View style={styles.main}>
             <View style={styles.inputs}>
@@ -15,7 +15,7 @@ const Signup = () => {
             <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}}/>
             <View style={{alignItems: 'center', justifyContent:'center', marginTop: '1%'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText}> Signin </Text>
+             <Text style={styles.appButtonText} onPress={()=>navigate('TabNavigator')}> Signin </Text>
            </TouchableOpacity>
            </View>
       </View>
@@ -55,5 +55,5 @@ const styles = StyleSheet.create({
       }
 })
 
-export default Signup
+export default Signin
 

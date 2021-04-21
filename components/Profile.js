@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import React, {useState} from 'react';
 
-const About = () =>{
+const Profile = () =>{
   return (
     <View style={styles.container}>
-     <Text style={styles.text}> Hello from About</Text>
+     <Text style={styles.text}> Hello from Profile</Text>
    </View>
   );  
 }
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default About
+export default Profile
