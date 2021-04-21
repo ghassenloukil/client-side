@@ -1,9 +1,32 @@
 import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput  } from 'react-native';
 import React, {useState} from 'react';
+import axios from 'axios';
 
 
 
 const Signin = ({ navigation: { navigate } }) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleClick = function () {
+        var obj = { email: email, password: password };
+        // console.log(state.name , state.password)
+        axios
+          .post('http://10.0.2.2:3000/api/ParkiZone/login', obj)
+          .then((res) => {
+              if (res.data.message === "success") {
+                console.log("i'm in");
+                // console.log(localStorage.token);
+                navigate('TabNavigator')
+              } else {
+               console.log("you can not access");
+              }
+            
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
     return (
         <View style={styles.main}>
             <View style={styles.inputs}>
@@ -11,11 +34,11 @@ const Signin = ({ navigation: { navigate } }) => {
       <Image   style={{ width: 100, height: 150, marginTop: "-10%",justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
       </View>
       <View style={{height: '100%'}}>
-            <TextInput  placeholder="Email" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20, backgroundColor:'white'}}/>
-            <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}}/>
+            <TextInput  placeholder="Email" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20, backgroundColor:'white'}} onChangeText={email => setEmail(email)} defaultValue={email}/>
+            <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}} onChangeText={password => setPassword(password)} defaultValue={password}/>
             <View style={{alignItems: 'center', justifyContent:'center', marginTop: '1%'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText} onPress={()=>navigate('TabNavigator')}> Signin </Text>
+             <Text style={styles.appButtonText} onPress={handleClick}> Signin </Text>
            </TouchableOpacity>
            </View>
       </View>
