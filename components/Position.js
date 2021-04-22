@@ -16,13 +16,13 @@ export default class Position extends React.Component {
                 
               }
           }, 
-          // {
-          //   coordinates: {
-          //     latitude: 36.8512,
-          //   longitude: 10.2584
+          {
+            coordinates: {
+              latitude: 36.8512,
+            longitude: 10.2584
             
-          // }
-          // },
+          }
+          },
           
         ]
             
@@ -33,10 +33,10 @@ export default class Position extends React.Component {
         return (
             <View>
                 
-            {this.state.parkingsSpots.map((e)=>{
+            {this.state.parkingsSpots.map((e, index)=>{
                       
                 return  (
-                 <MapView.Marker
+                 <MapView.Marker key={index}
                  
                  coordinate={e.coordinates}
                  >

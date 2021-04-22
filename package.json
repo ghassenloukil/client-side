@@ -45,7 +45,8 @@
     "react-navigation-stack": "^2.10.4",
     "react-navigation-tabs": "^2.11.0",
     "sweetalert2": "^10.16.5",
-    "throttle-debounce": "^3.0.1"
+    "throttle-debounce": "^3.0.1",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

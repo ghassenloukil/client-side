@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View ,FlatList,Button, Dimensions,TouchableOpacity, TouchableWithoutFeedback,Image,TouchableHighlight} from 'react-native';
 import MapView , {Marker,Callout} from 'react-native-maps';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import MapViewDirections from 'react-native-maps-directions';
-import { getDistance, getPreciseDistance } from 'geolib';
-import Polyline from '@mapbox/polyline';
+// import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+// import MapViewDirections from 'react-native-maps-directions';
+// import { getDistance, getPreciseDistance } from 'geolib';
+// import Polyline from '@mapbox/polyline';
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
 
@@ -18,17 +18,12 @@ const parkingsSpots = {
         latitude: 36.868,
       longitude: 10.2404
       
-    },
-    
-      
+    }, 
       coordinate: {
         latitude: 36.8512,
       longitude: 10.2584
       
     },
-    
-      
-      
       coordinate: {
         latitude: 36.8512,
       longitude: 10.2584
@@ -67,20 +62,20 @@ export default class Maps extends React.Component {
         }
         
     }
-    componentWillMount() {
-      const { parkings } = this.props;
-      const hours = {};
+    // componentWillMount() {
+    //   const { parkings } = this.props;
+    //   const hours = {};
   
       
-      this.setState({ hours });
-    }
+    //   this.setState({ hours });
+    // }
   
-    handleHours = (id, value) => {
-      const { hours } = this.state;
-      hours[id] = value;
+    // handleHours = (id, value) => {
+    //   const { hours } = this.state;
+    //   hours[id] = value;
   
-      this.setState({ hours });
-    };
+    //   this.setState({ hours });
+    // };
     componentDidMount(){
         
         let geoOptions = {
@@ -193,10 +188,10 @@ export default class Maps extends React.Component {
                 }}
               />
          </MapView.Marker>
-         {/* <Position/> */}
+         <Position/>
     
          
-         <GooglePlacesAutocomplete
+         {/* <GooglePlacesAutocomplete
       placeholder='Search'
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
@@ -206,7 +201,7 @@ export default class Maps extends React.Component {
         key: GOOGLE_API_KEY,
         language: 'en',
       }}
-    />
+    /> */}
      {/* <MapViewDirections
           origin={this.state.coordinate}
           destination={this.state.coordinate}
@@ -221,14 +216,14 @@ export default class Maps extends React.Component {
 
                 <View >
                 
-              {this.renderHours()}
+              {/* {this.renderHours()} */}
               
-              <TouchableOpacity style={styles.payBtn}>
+              {/* <TouchableOpacity style={styles.payBtn}>
               <Text >
                 Proceed to pay :${'10' }
               </Text>
               
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             </View>
             </View>
              </View>

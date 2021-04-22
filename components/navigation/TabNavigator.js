@@ -19,8 +19,7 @@ export default function TabNavigator() {
       tabBarOptions={{
         activeTintColor: 'white',
         style: {backgroundColor: 'black'}
-      }}
-      
+      }}  
       >
       <Tab.Screen
         name="Feed"
