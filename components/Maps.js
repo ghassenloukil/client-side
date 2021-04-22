@@ -136,6 +136,10 @@ export default class Maps extends React.Component {
     
     render() {
         return (
+            <View style={{backgroundColor:"black"}}>
+      <View style={{alignItems: 'center', justifyContent:'center'}}>
+      <Image   style={{ width: 100, height: 150, marginTop: 0}} source={require('./parki.jpg')}/> 
+      </View> 
             <View style={styles.container}>
                 { !this.state.ready && (
                 <Image
@@ -160,7 +164,7 @@ export default class Maps extends React.Component {
                   >
                     
                    
-{/*              
+             
                                <Marker
             coordinate={{latitude: 36.8559,
                 longitude: 10.2572,}}
@@ -173,7 +177,7 @@ export default class Maps extends React.Component {
                 }}
               />
               
-         </Marker> */}
+         </Marker>
          
            
                       <MapView.Marker  style={styles.tinyLogo} 
@@ -189,7 +193,7 @@ export default class Maps extends React.Component {
                 }}
               />
          </MapView.Marker>
-         <Position/>
+         {/* <Position/> */}
     
          
          <GooglePlacesAutocomplete
@@ -227,6 +231,7 @@ export default class Maps extends React.Component {
             </TouchableOpacity>
             </View>
             </View>
+             </View>
         );
     }
 }
@@ -244,18 +249,27 @@ const COLORS = {
 };
 const styles = StyleSheet.create({
     container: {
-        ...StyleSheet.absoluteFillObject,
-        height: 1000,
-        width: 500,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        flex: 3,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+        // ...StyleSheet.absoluteFillObject,
+        // position: 'absolute',
+        left: 0,
+        right: 0,
+        // top: '20%',
+        bottom: 0,
+        height: '80%',
+        width: '100%',
+        // flex: 1,
+        // marginTop: '50%',
+        // justifyContent: 'flex-end',
+        // alignItems: 'center',
+        // flex: 1,
+        // backgroundColor: '#fff',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // marginTop: 10
+
     },
     big: {
-        fontSize: 48
+        // fontSize: 48
     },
     map: {
         ...StyleSheet.absoluteFillObject,

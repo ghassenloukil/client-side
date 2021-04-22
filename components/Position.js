@@ -16,13 +16,13 @@ export default class Position extends React.Component {
                 
               }
           }, 
-          {
-            coordinates: {
-              latitude: 36.8512,
-            longitude: 10.2584
+          // {
+          //   coordinates: {
+          //     latitude: 36.8512,
+          //   longitude: 10.2584
             
-          }
-          },
+          // }
+          // },
           
         ]
             

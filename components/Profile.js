@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Maps from './Maps.js'
 import React, {useState} from 'react';
 
-const Create = () =>{
+const Profile = () =>{
   return (
     <View style={styles.container}>
-     <Maps/>
+     <Text style={styles.text}> Hello from Profile</Text>
    </View>
   );  
 }
@@ -23,6 +22,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   }
 })
-export default Create;
 
-
+export default Profile
