@@ -1,21 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+// import { StyleSheet, Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './components/Home'
+import Signup from './components/Signup'
+import Signin from './components/Signin'
+import TabNavigator from './components/navigation/TabNavigator.js';
+
 
 export default function App() {
+  const Stack = createStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+ <NavigationContainer >
+    <Stack.Navigator initialRouteName="Home" 
+   screenOptions={{
+    headerTintColor: 'white',
+    headerStyle: { backgroundColor: '#212121' },
+  }}>
+      <Stack.Screen 
+       name="Home"
+       component={HomeScreen}
+       style={{backgroundColor: 'black'}} 
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+      />
+      <Stack.Screen
+        name="Signin"
+        component={Signin}
+      />
+      <Stack.Screen
+        name="TabNavigator"
+        component={TabNavigator}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+  // <TabNavigator/>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
