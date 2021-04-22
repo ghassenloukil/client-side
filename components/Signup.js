@@ -63,13 +63,11 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     appButtonContainer: {
-        // elevation: 8,
         backgroundColor: "transparent",
         borderRadius: 10,
         borderWidth: 2,
         borderColor: 'white',
         paddingVertical: 10,
-        // paddingHorizontal: 12,
         width: 150,
         marginRight: 10,
         marginTop: 1

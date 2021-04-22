@@ -69,27 +69,11 @@ export default class Maps extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        // ...StyleSheet.absoluteFillObject,
-        // position: 'absolute',
         left: 0,
         right: 0,
-        // top: '20%',
         bottom: 0,
         height: '80%',
         width: '100%',
-        // flex: 1,
-        // marginTop: '50%',
-        // justifyContent: 'flex-end',
-        // alignItems: 'center',
-        // flex: 1,
-        // backgroundColor: '#fff',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // marginTop: 10
-
-    },
-    big: {
-        // fontSize: 48
     },
     map: {
         ...StyleSheet.absoluteFillObject,
