@@ -9,6 +9,37 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 import expo.modules.splashscreen.singletons.SplashScreen;
 import expo.modules.splashscreen.SplashScreenImageResizeMode;
+public class SampleActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private BingMap mBingMap;
+    private MapView mMapView;
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sample);
+    }
+    
+    private void initMap() {
+        mMapView = (MapView) findViewById(R.id.map_view);
+        mMapView.getMapAsync("Your Bing API Key", this);
+    }
+
+    @Override
+    public void onMapReady(BingMap bingMap) {
+        mBingMap = bingMap;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initMap();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
 
 public class MainActivity extends ReactActivity {
   @Override

@@ -1,17 +1,88 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import MapView , {Marker} from 'react-native-maps';
+import { StyleSheet, Text, View ,FlatList,Button, Dimensions,TouchableOpacity, TouchableWithoutFeedback,Image,TouchableHighlight} from 'react-native';
+import MapView , {Marker,Callout} from 'react-native-maps';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import MapViewDirections from 'react-native-maps-directions';
+import { getDistance, getPreciseDistance } from 'geolib';
+import Polyline from '@mapbox/polyline';
+import Dropdown from "react-native-modal-dropdown";
+import Position from './Position.js'
 
+const { height, width } = Dimensions.get("screen");
+const GOOGLE_API_KEY='AIzaSyC6ZAVCmf10k_72UdIM9yzPPp_6KeKZ7CY'
+const parkingsSpots = {
+    
+     
+      
+      coordinate: {
+        latitude: 36.868,
+      longitude: 10.2404
+      
+    },
+    
+      
+      coordinate: {
+        latitude: 36.8512,
+      longitude: 10.2584
+      
+    },
+    
+      
+      
+      coordinate: {
+        latitude: 36.8512,
+      longitude: 10.2584
+      
+    }}
+  
+  
 export default class Maps extends React.Component {
     constructor(){
         super();
         this.state = {
             ready: false,
             where: {lat:null, lng:null},
-            error: null
+            error: null,
+          
+        hours: {},
+        // 
+        parkingsSpots:[
+          {
+            coordinates: {
+            latitude: 36.868,
+             longitude: 10.2404
+                
+              }
+          }, 
+          {
+            coordinates: {
+              latitude: 36.8512,
+            longitude: 10.2584
+            
+          }
+          },
+          
+        ]
+            
         }
+        
     }
+    componentWillMount() {
+      const { parkings } = this.props;
+      const hours = {};
+  
+      
+      this.setState({ hours });
+    }
+  
+    handleHours = (id, value) => {
+      const { hours } = this.state;
+      hours[id] = value;
+  
+      this.setState({ hours });
+    };
     componentDidMount(){
+        
         let geoOptions = {
             enableHighAccuracy: true,
             timeOut: 20000,
@@ -33,6 +104,36 @@ export default class Maps extends React.Component {
     geoFailure = (err) => {
         this.setState({error: err.message});
     }
+    renderParkin(item){
+        return(
+               <View key={`Parking ${item.id}`}>
+              <Text>{item.title}</Text>
+               </View>
+
+        )
+    }
+    renderHours(id) {
+      const { hours } = this.state;
+      const availableHours = [1, 2, 3, 4, 5, 6];
+  
+      return (
+        <Dropdown
+          defaultIndex={0}
+          options={availableHours}
+          style={styles.hoursDropdown}
+          defaultValue={`0${hours[id]}:00` || "01:00"}
+          dropdownStyle={styles.hoursDropdownStyle}
+          onSelect={(index, value) => this.handleHours(id, value)}
+          renderRow={option => (
+            <Text style={styles.hoursDropdownOption} >{`0${option}:00`} HOURS</Text>
+            
+          )}
+          
+          renderButtonText={option => `0${option}:00`}
+        />
+      );
+    }
+    
     render() {
         return (
             <View style={{backgroundColor:"black"}}>
@@ -40,10 +141,19 @@ export default class Maps extends React.Component {
       <Image   style={{ width: 100, height: 150, marginTop: 0}} source={require('./parki.jpg')}/> 
       </View> 
             <View style={styles.container}>
+                { !this.state.ready && (
+                <Image
+                style={styles.tinyLogon}
+                source={{
+                  uri: './log.png',
+                }}
+              />
+                )}
                 { this.state.error && (
                 <Text style={styles.big}>{this.state.error}</Text>
                 )}
                 { this.state.ready && (
+                   
                     <MapView  style={styles.map}
                     initialRegion={{
                       latitude: this.state.where.lat,
@@ -52,21 +162,91 @@ export default class Maps extends React.Component {
                       longitudeDelta: 0.0421,
                     }}
                   >
-                      <MapView.Marker
+                    
+                   
+             
+                               <Marker
+            coordinate={{latitude: 36.8559,
+                longitude: 10.2572,}}
+            title={'heyyy'}
+            description={"open 24/24"}>
+<Image
+                style={styles.tinyLogo}
+                source={{
+                  uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
+                }}
+              />
+              
+         </Marker>
+         
+           
+                      <MapView.Marker  style={styles.tinyLogo} 
             coordinate={{latitude: this.state.where.lat,
                 longitude: this.state.where.lng,}}
-            title={"title"}
+            title={"location"}
             description={"description"}
-         />
+         >
+             <Image
+                style={styles.tinyLogo}
+                source={{
+                  uri: 'https://image.flaticon.com/icons/png/128/1180/1180754.png',
+                }}
+              />
+         </MapView.Marker>
+         {/* <Position/> */}
+    
+         
+         <GooglePlacesAutocomplete
+      placeholder='Search'
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        console.log(data, details);
+      }}
+      query={{
+        key: GOOGLE_API_KEY,
+        language: 'en',
+      }}
+    />
+     {/* <MapViewDirections
+          origin={this.state.coordinate}
+          destination={this.state.coordinate}
+          apikey={GOOGLE_API_KEY} 
+          strokeWidth={4}
+          mode='DRIVING'
+          strokeColor="#111111"
+        /> */}
                   </MapView>
                    
                 )}
+
+                <View >
+                
+              {this.renderHours()}
+              
+              <TouchableOpacity style={styles.payBtn}>
+              <Text >
+                Proceed to pay :${'10' }
+              </Text>
+              
+            </TouchableOpacity>
+            </View>
             </View>
              </View>
         );
     }
 }
-
+const SIZES = {
+  base: 12,
+  icon: 16,
+  font: 16,
+}
+const COLORS = {
+  red: '#D83C54',
+  gray: '#7D818A',
+  black: '#3D4448',
+  white: '#FFFFFF',
+  overlay: '#C1BEC0',
+};
 const styles = StyleSheet.create({
     container: {
         left: 0,
@@ -77,5 +257,51 @@ const styles = StyleSheet.create({
     },
     map: {
         ...StyleSheet.absoluteFillObject,
+      },tinyLogo: {
+        width: 30,
+        height: 30,
+        
+      },
+      tinyLogon: {
+        width: 400,
+        height: 400,
+        
+      }, parking: {
+        flexDirection: "row",
+       
+        borderRadius: 6,
+
+       
+        width: width - 24 * 2,
+        
+      },
+      hours: {
+        flex: 3,
+        flexDirection: "column",
+        marginLeft: SIZES.base / 2,
+        justifyContent: "space-evenly"
+      }, hoursDropdown: {
+        borderRadius: SIZES.base / 2,
+        borderColor: COLORS.overlay,
+        borderWidth: 1,
+        padding: SIZES.base,
+        marginRight: SIZES.base / 2
+      },
+      hoursDropdownOption: {
+        padding: 5,
+        fontSize: SIZES.font * 0.8
+      },
+      hoursDropdownStyle: {
+        marginLeft: -SIZES.base,
+        paddingHorizontal: SIZES.base / 2,
+        marginVertical: -(SIZES.base + 1)
+      },
+      payBtn: {
+        borderRadius: 6,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: SIZES.base * 1.5,
+        backgroundColor: COLORS.red
       },
 });
