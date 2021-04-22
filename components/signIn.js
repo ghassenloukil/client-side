@@ -357,13 +357,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
         marginTop: 1
       },
-      appButtonText: {
-        fontSize: 18,
-        color:"white",
-        fontWeight: "bold",
-        alignSelf: "center",
-        textTransform: "uppercase"
-      }
+     
 })
 
 export default Signup
