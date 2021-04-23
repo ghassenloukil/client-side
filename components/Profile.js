@@ -53,7 +53,7 @@ const Profile = () => {
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>Gaston Loukil</Title>
+            }}>Gaston Loukil hlili</Title>
             <Caption style={styles.caption}>11_004</Caption>
           </View>
         </View>
