@@ -7,34 +7,9 @@ import { getDistance, getPreciseDistance } from 'geolib';
 import Polyline from '@mapbox/polyline';
 // import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
-
 const { height, width } = Dimensions.get("screen");
-// const GOOGLE_API_KEY='AIzaSyC6ZAVCmf10k_72UdIM9yzPPp_6KeKZ7CY'
-const parkingsSpots = {
-    
-     
-      
-      coordinate: {
-        latitude: 36.868,
-      longitude: 10.2404
-      
-    },
-    
-      
-      coordinate: {
-        latitude: 36.8512,
-      longitude: 10.2584
-      
-    },
-    
-      
-      
-      coordinate: {
-        latitude: 36.8512,
-      longitude: 10.2584
-      
-    }}
-  
+const GOOGLE_API_KEY='uCTewQNHhUZcZCOltuT966Vaxrp0ls7G'
+
   
 export default class Maps extends React.Component {
     constructor(){
@@ -67,20 +42,7 @@ export default class Maps extends React.Component {
         }
         
     }
-    componentWillMount() {
-      const { parkings } = this.props;
-      const hours = {};
-  
-      
-      this.setState({ hours });
-    }
-  
-    handleHours = (id, value) => {
-      const { hours } = this.state;
-      hours[id] = value;
-  
-      this.setState({ hours });
-    };
+    
     componentDidMount(){
         
         let geoOptions = {
@@ -89,9 +51,7 @@ export default class Maps extends React.Component {
             maximumAge: 60 * 60 * 24
         };
         this.setState({ready:false, error: null });
-        navigator.geolocation.getCurrentPosition( this.geoSuccess, 
-                                                this.geoFailure,
-                                                geoOptions);
+        navigator.geolocation.getCurrentPosition( this.geoSuccess, this.geoFailure, geoOptions);
     }
     geoSuccess = (position) => {
         console.log(position.coords.latitude);
@@ -109,7 +69,6 @@ export default class Maps extends React.Component {
                <View key={`Parking ${item.id}`}>
               <Text>{item.title}</Text>
                </View>
-
         )
     }
     // renderHours(id) {
@@ -133,8 +92,10 @@ export default class Maps extends React.Component {
     //     />
     //   );
     // }
-    
     render() {
+      const origin= {latitude: this.state.where.lat, longitude: this.state.where.lng}
+      const destination={latitude: 36.8559,longitude: 10.2572}
+
         return (
             <View style={{backgroundColor:"black"}}>
       <View style={{alignItems: 'center', justifyContent:'center'}}>
@@ -162,15 +123,12 @@ export default class Maps extends React.Component {
                       longitudeDelta: 0.0421,
                     }}
                   >
-                    
-                   
-             
-                               <Marker
+           <Marker
             coordinate={{latitude: 36.8559,
                 longitude: 10.2572,}}
             title={'heyyy'}
             description={"open 24/24"}>
-<Image
+                <Image
                 style={styles.tinyLogo}
                 source={{
                   uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
@@ -178,9 +136,7 @@ export default class Maps extends React.Component {
               />
               
          </Marker>
-         
-           
-                      <MapView.Marker  style={styles.tinyLogo} 
+                  <MapView.Marker  style={styles.tinyLogo} 
             coordinate={{latitude: this.state.where.lat,
                 longitude: this.state.where.lng,}}
             title={"location"}
@@ -194,8 +150,6 @@ export default class Maps extends React.Component {
               />
          </MapView.Marker>
          {/* <Position/> */}
-    
-         
          <GooglePlacesAutocomplete
       placeholder='Search'
       onPress={(data, details = null) => {
@@ -207,28 +161,26 @@ export default class Maps extends React.Component {
         language: 'en',
       }}
     />
-     {/* <MapViewDirections
-          origin={this.state.coordinate}
-          destination={this.state.coordinate}
+     <MapViewDirections
+          origin={origin}
+          destination={destination }
           apikey={GOOGLE_API_KEY} 
           strokeWidth={4}
           mode='DRIVING'
           strokeColor="#111111"
-        /> */}
+        />
                   </MapView>
                    
                 )}
-
                 <View >
-                
               {/* {this.renderHours()} */}
               
-              <TouchableOpacity style={styles.payBtn}>
+              {/* <TouchableOpacity style={styles.payBtn}>
               <Text >
-                Proceed to pay :${'10' }
+                Proceed to pay :${'5' }
               </Text>
               
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             </View>
             </View>
              </View>
