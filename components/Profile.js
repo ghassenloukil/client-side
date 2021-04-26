@@ -53,7 +53,7 @@ const Profile = () => {
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>Gaston Loukil hlili</Title>
+            }}>Gaston Loukil</Title>
             <Caption style={styles.caption}>11_004</Caption>
           </View>
         </View>
@@ -95,31 +95,31 @@ const Profile = () => {
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="heart-outline" color="#FF6347" size={25}/>
-              <Text style={styles.menuItemText}>Your Favorites</Text>
+              <Text >Your Favorites</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="credit-card" color="#FF6347" size={25}/>
-              <Text style={styles.menuItemText}>Payment</Text>
+              <Text >Payment</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="share-outline" color="#FF6347" size={25}/>
-              <Text style={styles.menuItemText}>Tell Your Friends</Text>
+              <Text >Tell Your Friends</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="account-check-outline" color="#FF6347" size={25}/>
-              <Text style={styles.menuItemText}>Support</Text>
+              <Text >Support</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="settings-outline" color="#FF6347" size={25}/>
-              <Text style={styles.menuItemText}>Settings</Text>
+              <Text >Settings</Text>
             </View>
           </TouchableRipple>
         </View>
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30, 
   },
   menuItemText: {
-    color: '#7777777',
+    
     marginLeft: 20,
     fontWeight: '600',
     fontSize: 16,

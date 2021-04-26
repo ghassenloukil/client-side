@@ -161,6 +161,7 @@ export default class Maps extends React.Component {
         language: 'en',
       }}
     />
+    
      <MapViewDirections
           origin={origin}
           destination={destination }
