@@ -7,9 +7,10 @@ import MapView , {Marker,Callout} from 'react-native-maps';
 // import Polyline from '@mapbox/polyline';
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
-
+// const origin = {latitude: 37.3318456, longitude: -122.0296002};
+// const destination = {latitude: 37.771707, longitude: -122.4053769};
 const { height, width } = Dimensions.get("screen");
-const GOOGLE_API_KEY='AIzaSyC6ZAVCmf10k_72UdIM9yzPPp_6KeKZ7CY'
+const GOOGLE_API_KEY='AIzaSyDlq2OkQ1dmOY1rPvtnvK8ZntS21TNOsAc'
 const parkingsSpots = {
     
      
@@ -203,8 +204,8 @@ export default class Maps extends React.Component {
       }}
     /> */}
      {/* <MapViewDirections
-          origin={this.state.coordinate}
-          destination={this.state.coordinate}
+          origin={origin}
+          destination={destination}
           apikey={GOOGLE_API_KEY} 
           strokeWidth={4}
           mode='DRIVING'
