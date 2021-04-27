@@ -33,7 +33,9 @@ export default class Position extends React.Component {
         return (
             <View>
                 
+
             {this.state.parkingsSpots.map((e, index)=>{
+
                       
                 return  (
                  <MapView.Marker key={index}

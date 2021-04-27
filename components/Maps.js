@@ -7,6 +7,7 @@ import MapView , {Marker,Callout} from 'react-native-maps';
 // import Polyline from '@mapbox/polyline';
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
+
 // const origin = {latitude: 37.3318456, longitude: -122.0296002};
 // const destination = {latitude: 37.771707, longitude: -122.4053769};
 const { height, width } = Dimensions.get("screen");
@@ -31,6 +32,7 @@ const parkingsSpots = {
       
     }}
   
+
   
 export default class Maps extends React.Component {
     constructor(){
@@ -63,6 +65,7 @@ export default class Maps extends React.Component {
         }
         
     }
+
     // componentWillMount() {
     //   const { parkings } = this.props;
     //   const hours = {};
@@ -77,6 +80,9 @@ export default class Maps extends React.Component {
   
     //   this.setState({ hours });
     // };
+
+    
+
     componentDidMount(){
         
         let geoOptions = {
@@ -85,9 +91,7 @@ export default class Maps extends React.Component {
             maximumAge: 60 * 60 * 24
         };
         this.setState({ready:false, error: null });
-        navigator.geolocation.getCurrentPosition( this.geoSuccess, 
-                                                this.geoFailure,
-                                                geoOptions);
+        navigator.geolocation.getCurrentPosition( this.geoSuccess, this.geoFailure, geoOptions);
     }
     geoSuccess = (position) => {
         console.log(position.coords.latitude);
@@ -105,7 +109,6 @@ export default class Maps extends React.Component {
                <View key={`Parking ${item.id}`}>
               <Text>{item.title}</Text>
                </View>
-
         )
     }
     renderHours(id) {
@@ -129,8 +132,10 @@ export default class Maps extends React.Component {
         />
       );
     }
-    
     render() {
+      const origin= {latitude: this.state.where.lat, longitude: this.state.where.lng}
+      const destination={latitude: 36.8559,longitude: 10.2572}
+
         return (
             <View style={{backgroundColor:"black"}}>
       <View style={{alignItems: 'center', justifyContent:'center'}}>
@@ -158,15 +163,12 @@ export default class Maps extends React.Component {
                       longitudeDelta: 0.0421,
                     }}
                   >
-                    
-                   
-             
-                               <Marker
+           <Marker
             coordinate={{latitude: 36.8559,
                 longitude: 10.2572,}}
             title={'heyyy'}
             description={"open 24/24"}>
-<Image
+                <Image
                 style={styles.tinyLogo}
                 source={{
                   uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
@@ -174,9 +176,7 @@ export default class Maps extends React.Component {
               />
               
          </Marker>
-         
-           
-                      <MapView.Marker  style={styles.tinyLogo} 
+                  <MapView.Marker  style={styles.tinyLogo} 
             coordinate={{latitude: this.state.where.lat,
                 longitude: this.state.where.lng,}}
             title={"location"}
@@ -193,6 +193,10 @@ export default class Maps extends React.Component {
     
          
          {/* <GooglePlacesAutocomplete
+
+         {/* <Position/> */}
+         <GooglePlacesAutocomplete
+
       placeholder='Search'
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
@@ -202,26 +206,32 @@ export default class Maps extends React.Component {
         key: GOOGLE_API_KEY,
         language: 'en',
       }}
+
     /> */}
      {/* <MapViewDirections
           origin={origin}
           destination={destination}
+
+    />
+     <MapViewDirections
+          origin={origin}
+          destination={destination }
+
           apikey={GOOGLE_API_KEY} 
           strokeWidth={4}
           mode='DRIVING'
           strokeColor="#111111"
-        /> */}
+        />
                   </MapView>
                    
                 )}
-
                 <View >
-                
+
               {/* {this.renderHours()} */}
               
               {/* <TouchableOpacity style={styles.payBtn}>
               <Text >
-                Proceed to pay :${'10' }
+                Proceed to pay :${'5' }
               </Text>
               
             </TouchableOpacity> */}
