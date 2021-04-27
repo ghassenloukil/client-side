@@ -35,7 +35,7 @@ const Signin = ({ navigation: { navigate } }) => {
       </View>
       <View style={{height: '100%'}}>
             <TextInput  placeholder="Email" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20, backgroundColor:'white'}} onChangeText={email => setEmail(email)} defaultValue={email}/>
-            <TextInput  placeholder="password" style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}} onChangeText={password => setPassword(password)} defaultValue={password}/>
+            <TextInput  placeholder="password" secureTextEntry={true} style={{marginTop: '3%', height: 35, borderRadius: 10, fontSize: 20,backgroundColor:'white'}} onChangeText={password => setPassword(password)} defaultValue={password}/>
             <View style={{alignItems: 'center', justifyContent:'center', marginTop: '1%'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
              <Text style={styles.appButtonText} onPress={handleClick}> Signin </Text>
