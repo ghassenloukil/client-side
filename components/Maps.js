@@ -1,14 +1,37 @@
 import React from 'react';
 import { StyleSheet, Text, View ,FlatList,Button, Dimensions,TouchableOpacity, TouchableWithoutFeedback,Image,TouchableHighlight} from 'react-native';
 import MapView , {Marker,Callout} from 'react-native-maps';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import MapViewDirections from 'react-native-maps-directions';
-import { getDistance, getPreciseDistance } from 'geolib';
-import Polyline from '@mapbox/polyline';
+// import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+// import MapViewDirections from 'react-native-maps-directions';
+// import { getDistance, getPreciseDistance } from 'geolib';
+// import Polyline from '@mapbox/polyline';
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
+
+// const origin = {latitude: 37.3318456, longitude: -122.0296002};
+// const destination = {latitude: 37.771707, longitude: -122.4053769};
 const { height, width } = Dimensions.get("screen");
-const GOOGLE_API_KEY='uCTewQNHhUZcZCOltuT966Vaxrp0ls7G'
+const GOOGLE_API_KEY='AIzaSyDlq2OkQ1dmOY1rPvtnvK8ZntS21TNOsAc'
+const parkingsSpots = {
+    
+     
+      
+      coordinate: {
+        latitude: 36.868,
+      longitude: 10.2404
+      
+    }, 
+      coordinate: {
+        latitude: 36.8512,
+      longitude: 10.2584
+      
+    },
+      coordinate: {
+        latitude: 36.8512,
+      longitude: 10.2584
+      
+    }}
+  
 
   
 export default class Maps extends React.Component {
@@ -42,7 +65,24 @@ export default class Maps extends React.Component {
         }
         
     }
+
+    // componentWillMount() {
+    //   const { parkings } = this.props;
+    //   const hours = {};
+  
+      
+    //   this.setState({ hours });
+    // }
+  
+    // handleHours = (id, value) => {
+    //   const { hours } = this.state;
+    //   hours[id] = value;
+  
+    //   this.setState({ hours });
+    // };
+
     
+
     componentDidMount(){
         
         let geoOptions = {
@@ -149,8 +189,14 @@ export default class Maps extends React.Component {
                 }}
               />
          </MapView.Marker>
+         <Position/>
+    
+         
+         {/* <GooglePlacesAutocomplete
+
          {/* <Position/> */}
          <GooglePlacesAutocomplete
+
       placeholder='Search'
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
@@ -160,10 +206,17 @@ export default class Maps extends React.Component {
         key: GOOGLE_API_KEY,
         language: 'en',
       }}
+
+    /> */}
+     {/* <MapViewDirections
+          origin={origin}
+          destination={destination}
+
     />
      <MapViewDirections
           origin={origin}
           destination={destination }
+
           apikey={GOOGLE_API_KEY} 
           strokeWidth={4}
           mode='DRIVING'
@@ -173,6 +226,7 @@ export default class Maps extends React.Component {
                    
                 )}
                 <View >
+
               {/* {this.renderHours()} */}
               
               {/* <TouchableOpacity style={styles.payBtn}>
@@ -201,27 +255,11 @@ const COLORS = {
 };
 const styles = StyleSheet.create({
     container: {
-        // ...StyleSheet.absoluteFillObject,
-        // position: 'absolute',
         left: 0,
         right: 0,
-        // top: '20%',
         bottom: 0,
         height: '80%',
         width: '100%',
-        // flex: 1,
-        // marginTop: '50%',
-        // justifyContent: 'flex-end',
-        // alignItems: 'center',
-        // flex: 1,
-        // backgroundColor: '#fff',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // marginTop: 10
-
-    },
-    big: {
-        // fontSize: 48
     },
     map: {
         ...StyleSheet.absoluteFillObject,

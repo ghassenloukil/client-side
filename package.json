@@ -33,6 +33,7 @@
     "react-native-maps": "^0.27.1",
     "react-native-maps-directions": "^1.8.0",
     "react-native-modal-dropdown": "git+https://github.com/siemiatj/react-native-modal-dropdown.git",
+    "react-native-paper": "^4.8.0",
     "react-native-placesearch": "^3.0.3",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
@@ -45,7 +46,8 @@
     "react-navigation-stack": "^2.10.4",
     "react-navigation-tabs": "^2.11.0",
     "sweetalert2": "^10.16.5",
-    "throttle-debounce": "^3.0.1"
+    "throttle-debounce": "^3.0.1",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
