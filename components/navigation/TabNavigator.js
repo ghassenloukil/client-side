@@ -1,11 +1,8 @@
 import React from 'react'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Home from '../Home'
 import Maps from '../Maps'
-// import Create from '../Create.js'
 import About from '../Profile.js'
 
 const Tab = createBottomTabNavigator();
