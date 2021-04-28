@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{ useState }from 'react';
 import axios from 'axios'
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 import {
@@ -9,39 +9,40 @@ import {
   TouchableRipple,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-export default class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-      this.state={
-        data:[]
-      }
-    
-  }
-  componentDidMount(){
+const Profile = ({ navigation: { navigate } }) => {
+  const [ data, setData ] = useState([]);
+	
+	
+
+	const getDetails = {
+		data: data
+		
+		
+	};
+ 
+  useEffect(() =>{
     var email = localStorage.getItem('email')
     axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${email}`).then(response =>{
       console.log(response.data,'fdfdfdf')
-      this.setState({
-        data:response.data
-      })
-      console.log(this.state.data,'fdfdfdfv')
+      setData(response)
+      
     }).catch(error =>{
       console.log(error)
 
     })
     
-  }
+  })
  
-  render() {
- 
+  
             
   return (
     <SafeAreaView style={styles.container}>
-       {console.log(this.state.data,'heyyyyy')}
+       
       {console.log('email',localStorage.getItem("email"))}
        
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
+        <Button onPress={()=>{navigate('Settings')}}/>
           <Avatar.Image
             source={{
               url: 'https://api.adorable.io/avatars/80/abott@adorable.png',
@@ -52,7 +53,7 @@ export default class Profile extends React.Component {
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>{this.state.data}</Title>
+            }}>name</Title>
             <Caption style={styles.caption}>11_004</Caption>
           </View>
         </View>
@@ -119,7 +120,7 @@ export default class Profile extends React.Component {
     </SafeAreaView>
   );
 };
-}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -169,3 +170,4 @@ const styles = StyleSheet.create({
     lineHeight: 26, 
   },
 });
+export default Profile

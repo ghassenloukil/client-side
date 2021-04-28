@@ -8,26 +8,28 @@ import {
 import MapView, { Marker, Callout } from "react-native-maps";
 const { height, width } = Dimensions.get("screen");
 export default class Position extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      parkingsSpots:[
-        {
-          coordinates: {
-          latitude: 36.868,
-           longitude: 10.2404
-
-            }
-        }, 
-        {
-          coordinates: {
-            latitude: 36.8512,
-          longitude: 10.2584
-
-        }
-        },
-
-      ]
+    constructor(){
+        super();
+        this.state = {
+           
+        // 
+        parkingsSpots:[
+          {
+            coordinates: {
+            latitude: 36.868,
+             longitude: 10.2404
+                
+              }
+          }, 
+          {
+            coordinates: {
+              latitude: 36.8512,
+            longitude: 10.2584
+            
+          }
+          },
+          
+        ]
             
         }
         
