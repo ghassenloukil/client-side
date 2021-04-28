@@ -1,5 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Maps from '../Maps'
@@ -9,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
-      <NavigationContainer >
+      // <NavigationContainer >
 
     <Tab.Navigator
       initialRouteName="Feed"
@@ -40,7 +41,7 @@ export default function TabNavigator() {
           }}
           />
     </Tab.Navigator>
-        </NavigationContainer> 
+        /* </NavigationContainer>  */
   );
 }
 

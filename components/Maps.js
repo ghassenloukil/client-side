@@ -5,6 +5,7 @@ import {
   View,
   Dimensions,
   Image,
+  TouchableOpacity
 } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import Dropdown from "react-native-modal-dropdown";
@@ -180,50 +181,10 @@ export default class Maps extends React.Component {
               />
          </MapView.Marker>
          <Position/>
-    
-         
-         {/* <GooglePlacesAutocomplete
-
-         {/* <Position/> */}
-         <GooglePlacesAutocomplete
-
-      placeholder='Search'
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      query={{
-        key: GOOGLE_API_KEY,
-        language: 'en',
-      }}
-
-    /> 
-     <MapViewDirections
-          origin={origin}
-          destination={destination}
-
-    />
-     <MapViewDirections
-          origin={origin}
-          destination={destination }
-
-          apikey={GOOGLE_API_KEY} 
-          strokeWidth={4}
-          mode='DRIVING'
-          strokeColor="#111111"
-        />
                   </MapView>
                    
                 )}
                 <View >
-              {this.renderHours()}
-              
-              <TouchableOpacity style={styles.payBtn}>
-              <Text >
-                Proceed to pay :${'5' }
-              </Text>
-              
-            </TouchableOpacity>
             </View>
             </View>
              </View>
