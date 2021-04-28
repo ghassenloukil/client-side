@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import axios from "axios";
+import 'localstorage-polyfill';
 
 const Signin = ({ navigation: { navigate } }) => {
   const [email, setEmail] = useState("");
@@ -19,8 +20,10 @@ const Signin = ({ navigation: { navigate } }) => {
       .post("http://10.0.2.2:3000/api/ParkiZone/login", obj)
       .then((res) => {
         if (res.data.message === "success") {
-          console.log("i'm in");
+          console.log("i'm in", email);
           navigate("TabNavigator");
+          localStorage.setItem("email", email);
+          
         } else {
           console.log("you can not access");
         }
