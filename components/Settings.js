@@ -10,8 +10,8 @@ import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native'
             
         }
     }
-    componentDidMount(id){
-    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`).then(response =>{
+    componentDidMount(){
+    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/`).then(response =>{
       console.log(response.data)
       this.setState({
         username:response.username,email:response.email

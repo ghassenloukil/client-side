@@ -18,8 +18,8 @@ export default class Profile extends React.Component {
     
   }
   componentDidMount(){
-    // var email=localStorage.getItem('email')
-    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile`,{email:'dhia@gmail.com'}).then(response =>{
+    
+    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile`).then(response =>{
       console.log(response.data,'fdfdfdf')
       this.setState({
         data:response.data
@@ -37,7 +37,7 @@ export default class Profile extends React.Component {
             
   return (
     <SafeAreaView style={styles.container}>
-       {console.log(this.state.data,'heyyyyy')}
+       {console.log(this.props,'heyyyyy')}
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Avatar.Image
