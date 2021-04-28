@@ -8,7 +8,7 @@ import Polyline from '@mapbox/polyline';
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
 const { height, width } = Dimensions.get("screen");
-const GOOGLE_API_KEY='uCTewQNHhUZcZCOltuT966Vaxrp0ls7G'
+const GOOGLE_API_KEY='pk.eyJ1IjoiZGhpYTE1IiwiYSI6ImNrbnV4c2c1ZDBoaHgyd2tnc3FqYXptZGUifQ.jZ9eAY4C-N7oduLCccII4g'
 
   
 export default class Maps extends React.Component {
@@ -127,7 +127,7 @@ export default class Maps extends React.Component {
             coordinate={{latitude: 36.8559,
                 longitude: 10.2572,}}
             title={'heyyy'}
-            description={"open 24/24"}>
+            description={'hello'}>
                 <Image
                 style={styles.tinyLogo}
                 source={{
