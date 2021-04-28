@@ -1,54 +1,36 @@
-import React from 'react';
+import React ,{ useState }from 'react';
 import axios from 'axios'
 import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native';
- export default class Settings extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            username:'',
-            email:'',
-            
-        }
-    }
-    componentDidMount(){
-    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/`).then(response =>{
-      console.log(response.data)
-      this.setState({
-        username:response.username,email:response.email
-      })
-    }).catch(error =>{
-      console.log(error)
-    })
-    
-  }
-  handleupdate(id){
-    console.log(id)
-    axios.patch(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`,{username:username,email:email})
-    .then(response=>{
-      console.log(response.data)
+const UpdateInfo = ({ navigation }) => {
+	const [ email, setEmail ] = useState('');
+	const [ name, setName ] = useState('');
+	
 
-    })
-  }
-     render() {
-       console.log(this.state)
+	const userDetails = {
+		email: email,
+		name: name
+		
+	};
+  const updateProf = (id) => {
+		console.log(userDetails, 'hello')
+		 axios.patch(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`, 	{
+			email: email,
+	   	name: name
+		}).then((res) => {
+				console.log(res,'hello');
+			}).catch ((err)=>{
+				console.log(err, 'hello')
+			})
+	};
         return (
             <SafeAreaView>
-              <TextInput
-                style={styles.input}
-                onChangeText={(e)=>this.setState({username:e.target.value})}
-                value={text}
-              />
-              <TextInput
-                style={styles.input}
-                onChangeText={(e)=>this.setState({email:e.target.value})}
-                value={number}
-               
-              />
-              <Button onPress={this.handleupdate()}/>
+              <TextInput  onChangeText={setEmail} value={email} placeholder="email" />
+              <TextInput style={styles.input} onChangeText={setName} value={name} placeholder="UserName" />
+              <Button onPress={updateProf}/>
             </SafeAreaView>
           );
-     }
- }
+   
+}
  const styles = StyleSheet.create({
     input: {
       height: 40,
@@ -56,3 +38,4 @@ import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native'
       borderWidth: 1,
     },
   });
+  export default UpdateInfo
