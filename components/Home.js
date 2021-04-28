@@ -38,17 +38,12 @@ const Home = ({ navigation: { navigate } }) =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: 'black'
   },
   text: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
-    // fontFamily:'lucida grande',
-    // alignItems: 'center',
-    // justifyContent:'center',
   },
   buttons: {
     width: 100,
@@ -60,13 +55,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   appButtonContainer: {
-    // elevation: 8,
     backgroundColor: "transparent",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: 'white',
     paddingVertical: 10,
-    // paddingHorizontal: 12
     width: 150,
     marginRight: 10,
   },

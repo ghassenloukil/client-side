@@ -1,48 +1,58 @@
-import React from 'react';
-import { StyleSheet, Text, View ,FlatList,Button, Dimensions,TouchableOpacity, TouchableWithoutFeedback,Image,TouchableHighlight} from 'react-native';
-import MapView , {Marker,Callout} from 'react-native-maps';
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import MapViewDirections from 'react-native-maps-directions';
-import { getDistance, getPreciseDistance } from 'geolib';
-import Polyline from '@mapbox/polyline';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Image,
+  TouchableOpacity
+} from "react-native";
+import MapView, { Marker, Callout } from "react-native-maps";
 import Dropdown from "react-native-modal-dropdown";
 import Position from './Position.js'
+
+// const origin = {latitude: 37.3318456, longitude: -122.0296002};
+// const destination = {latitude: 37.771707, longitude: -122.4053769};
 const { height, width } = Dimensions.get("screen");
 const GOOGLE_API_KEY='pk.eyJ1IjoiZGhpYTE1IiwiYSI6ImNrbnV4c2c1ZDBoaHgyd2tnc3FqYXptZGUifQ.jZ9eAY4C-N7oduLCccII4g'
 
   
 export default class Maps extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            ready: false,
-            where: {lat:null, lng:null},
-            error: null,
-          
-        hours: {},
-        // 
-        parkingsSpots:[
-          {
-            coordinates: {
+  constructor() {
+    super();
+    this.state = {
+      ready: false,
+      where: { lat: null, lng: null },
+      error: null,
+      hours: {},
+      parkingsSpots: [
+        {
+          coordinates: {
             latitude: 36.868,
-             longitude: 10.2404
-                
-              }
-          }, 
-          {
-            coordinates: {
-              latitude: 36.8512,
-            longitude: 10.2584
-            
-          }
+            longitude: 10.2404,
           },
-          
-        ]
-            
         }
-        
+        ]  
+      } 
     }
+
+    // componentWillMount() {
+    //   const { parkings } = this.props;
+    //   const hours = {};
+  
+      
+    //   this.setState({ hours });
+    // }
+  
+    // handleHours = (id, value) => {
+    //   const { hours } = this.state;
+    //   hours[id] = value;
+  
+    //   this.setState({ hours });
+    // };
+
     
+
     componentDidMount(){
         
         let geoOptions = {
@@ -130,8 +140,9 @@ export default class Maps extends React.Component {
             description={'hello'}>
                 <Image
                 style={styles.tinyLogo}
-                source={{
-                  uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
+                coordinate={{
+                  latitude: this.state.where.lat,
+                  longitude: this.state.where.lng,
                 }}
               />
               
@@ -149,38 +160,11 @@ export default class Maps extends React.Component {
                 }}
               />
          </MapView.Marker>
-         {/* <Position/> */}
-         <GooglePlacesAutocomplete
-      placeholder='Search'
-      onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-        console.log(data, details);
-      }}
-      query={{
-        key: GOOGLE_API_KEY,
-        language: 'en',
-      }}
-    />
-     <MapViewDirections
-          origin={origin}
-          destination={destination }
-          apikey={GOOGLE_API_KEY} 
-          strokeWidth={4}
-          mode='DRIVING'
-          strokeColor="#111111"
-        />
+         <Position/>
                   </MapView>
                    
                 )}
                 <View >
-              {/* {this.renderHours()} */}
-              
-              {/* <TouchableOpacity style={styles.payBtn}>
-              <Text >
-                Proceed to pay :${'5' }
-              </Text>
-              
-            </TouchableOpacity> */}
             </View>
             </View>
              </View>
@@ -191,85 +175,68 @@ const SIZES = {
   base: 12,
   icon: 16,
   font: 16,
-}
+};
 const COLORS = {
-  red: '#D83C54',
-  gray: '#7D818A',
-  black: '#3D4448',
-  white: '#FFFFFF',
-  overlay: '#C1BEC0',
+  red: "#D83C54",
+  gray: "#7D818A",
+  black: "#3D4448",
+  white: "#FFFFFF",
+  overlay: "#C1BEC0",
 };
 const styles = StyleSheet.create({
-    container: {
-        // ...StyleSheet.absoluteFillObject,
-        // position: 'absolute',
-        left: 0,
-        right: 0,
-        // top: '20%',
-        bottom: 0,
-        height: '80%',
-        width: '100%',
-        // flex: 1,
-        // marginTop: '50%',
-        // justifyContent: 'flex-end',
-        // alignItems: 'center',
-        // flex: 1,
-        // backgroundColor: '#fff',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // marginTop: 10
+  container: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: "80%",
+    width: "100%",
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  tinyLogo: {
+    width: 30,
+    height: 30,
+  },
+  tinyLogon: {
+    width: 400,
+    height: 400,
+  },
+  parking: {
+    flexDirection: "row",
 
-    },
-    big: {
-        // fontSize: 48
-    },
-    map: {
-        ...StyleSheet.absoluteFillObject,
-      },tinyLogo: {
-        width: 30,
-        height: 30,
-        
-      },
-      tinyLogon: {
-        width: 400,
-        height: 400,
-        
-      }, parking: {
-        flexDirection: "row",
-       
-        borderRadius: 6,
+    borderRadius: 6,
 
-       
-        width: width - 24 * 2,
-        
-      },
-      hours: {
-        flex: 3,
-        flexDirection: "column",
-        marginLeft: SIZES.base / 2,
-        justifyContent: "space-evenly"
-      }, hoursDropdown: {
-        borderRadius: SIZES.base / 2,
-        borderColor: COLORS.overlay,
-        borderWidth: 1,
-        padding: SIZES.base,
-        marginRight: SIZES.base / 2
-      },
-      hoursDropdownOption: {
-        padding: 5,
-        fontSize: SIZES.font * 0.8
-      },
-      hoursDropdownStyle: {
-        marginLeft: -SIZES.base,
-        paddingHorizontal: SIZES.base / 2,
-        marginVertical: -(SIZES.base + 1)
-      },
-      payBtn: {
-        borderRadius: 6,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: SIZES.base * 1.5,
-        backgroundColor: COLORS.red
-      },
+    width: width - 24 * 2,
+  },
+  hours: {
+    flex: 3,
+    flexDirection: "column",
+    marginLeft: SIZES.base / 2,
+    justifyContent: "space-evenly",
+  },
+  hoursDropdown: {
+    borderRadius: SIZES.base / 2,
+    borderColor: COLORS.overlay,
+    borderWidth: 1,
+    padding: SIZES.base,
+    marginRight: SIZES.base / 2,
+  },
+  hoursDropdownOption: {
+    padding: 5,
+    fontSize: SIZES.font * 0.8,
+  },
+  hoursDropdownStyle: {
+    marginLeft: -SIZES.base,
+    paddingHorizontal: SIZES.base / 2,
+    marginVertical: -(SIZES.base + 1),
+  },
+  payBtn: {
+    borderRadius: 6,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: SIZES.base * 1.5,
+    backgroundColor: COLORS.red,
+  },
 });
