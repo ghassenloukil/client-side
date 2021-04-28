@@ -7,7 +7,9 @@ import HomeScreen from './components/Home'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
 import TabNavigator from './components/navigation/TabNavigator.js';
-import LoginGoogle from './components/GoogleLogin'
+import LoginGoogle from './components/GoogleLogin';
+import Profile from './components/Profile'
+import Settings from './components/Settings'
 // import Maps from './components/Maps'
 
 
@@ -39,7 +41,9 @@ export default function App() {
 //       />
 //     </Stack.Navigator>
 //   </NavigationContainer>
-  <TabNavigator/>
+  // <TabNavigator/>
+     <Profile/>
+     
   // <LoginGoogle/>
   );
 }

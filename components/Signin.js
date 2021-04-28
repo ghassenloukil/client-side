@@ -18,6 +18,7 @@ const Signin = ({ navigation: { navigate } }) => {
                 console.log("i'm in");
                 // console.log(localStorage.token);
                 navigate('TabNavigator')
+                localStorage.setItem('email',email)
               } else {
                console.log("you can not access");
               }
