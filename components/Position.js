@@ -11,41 +11,54 @@ export default class Position extends React.Component {
   constructor() {
     super();
     this.state = {
-      parkingsSpots: [
+      parkingsSpots:[
         {
           coordinates: {
-            latitude: 36.868,
-            longitude: 10.2404,
-          },
-        },
+          latitude: 36.868,
+           longitude: 10.2404
+
+            }
+        }, 
         {
           coordinates: {
             latitude: 36.8512,
-            longitude: 10.2584,
-          },
+          longitude: 10.2584
+
+        }
         },
-      ],
-    };
-  }
-  render() {
-    return (
-      <View>
-        {this.state.parkingsSpots.map((e, index) => {
-          return (
-            <MapView.Marker key={index} coordinate={e.coordinates}>
-              <Image
-                style={styles.tinyLogo}
-                source={{
-                  uri:
-                    "https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png",
-                }}
-              />
-            </MapView.Marker>
-          );
-        })}
-      </View>
-    );
-  }
+
+      ]
+            
+        }
+        
+    }
+    render() {
+        return (
+            <View>
+                
+
+            {this.state.parkingsSpots.map((e, index)=>{
+
+                      
+                return  (
+                 <MapView.Marker key={index}
+                 
+                 coordinate={e.coordinates}
+                 >
+     <Image
+                     style={styles.tinyLogo}
+                     source={{
+                       uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
+                     }}
+                   />
+                   
+              </MapView.Marker>
+               )})}
+               
+             </View>
+        )
+       
+    }
 }
 const styles = StyleSheet.create({
   container: {

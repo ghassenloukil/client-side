@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
   return (
-    //   <NavigationContainer >
+      <NavigationContainer >
 
     <Tab.Navigator
       initialRouteName="Feed"
@@ -40,7 +40,7 @@ export default function TabNavigator() {
           }}
           />
     </Tab.Navigator>
-        /* </NavigationContainer> */
+        </NavigationContainer> 
   );
 }
 
