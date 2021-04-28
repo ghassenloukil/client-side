@@ -38,7 +38,6 @@ export default class Profile extends React.Component {
   return (
     <SafeAreaView style={styles.container}>
        {console.log(this.state.data,'heyyyyy')}
-      {console.log('email',localStorage.getItem("email"))}
        
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
