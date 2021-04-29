@@ -24,6 +24,7 @@ export default class App extends Component {
         // Use FloatFromBottom transition between screens
         configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
         // Pass a route mapper functions
+        //gaston
         renderScene={RouteMapper}
       />
     );
