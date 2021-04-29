@@ -14,17 +14,13 @@ const Profile = ({ navigation: { navigate } }) => {
 	
 	
 
-	const getDetails = {
-		data: data
-		
-		
-	};
+	
  
   useEffect(() =>{
     var email = localStorage.getItem('email')
     axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${email}`).then(response =>{
       console.log(response.data,'fdfdfdf')
-      setData(response)
+      setData(response.data)
       
     }).catch(error =>{
       console.log(error)
@@ -53,7 +49,7 @@ const Profile = ({ navigation: { navigate } }) => {
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>name</Title>
+            }}>{data}</Title>
             <Caption style={styles.caption}>11_004</Caption>
           </View>
         </View>
@@ -169,5 +165,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26, 
   },
+  input: {
+		height: 40,
+		margin: 12,
+		marginTop: 25,
+		borderBottomWidth: 2
+	}
 });
 export default Profile

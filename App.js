@@ -42,8 +42,8 @@ export default function App() {
 //     </Stack.Navigator>
 //   </NavigationContainer>
   // <TabNavigator/>
-     <Profile/>
-     
+    //  <Profile/>
+     <Settings/>
   // <LoginGoogle/>
   );
 }

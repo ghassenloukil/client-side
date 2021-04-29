@@ -3,19 +3,15 @@ import axios from 'axios'
 import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native';
 const UpdateInfo = ({ navigation }) => {
 	const [ email, setEmail ] = useState('');
-	const [ name, setName ] = useState('');
+	const [ username, setName ] = useState('');
 	
 
-	const userDetails = {
-		email: email,
-		name: name
-		
-	};
+	
   const updateProf = (id) => {
-		console.log(userDetails, 'hello')
-		 axios.patch(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`, 	{
+		
+		 axios.put(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`, 	{
 			email: email,
-	   	name: name
+			username: username
 		}).then((res) => {
 				console.log(res,'hello');
 			}).catch ((err)=>{
@@ -24,18 +20,19 @@ const UpdateInfo = ({ navigation }) => {
 	};
         return (
             <SafeAreaView>
-              <TextInput  onChangeText={setEmail} value={email} placeholder="email" />
-              <TextInput style={styles.input} onChangeText={setName} value={name} placeholder="UserName" />
-              <Button onPress={updateProf}/>
+              <TextInput   style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
+              <TextInput style={styles.input} onChangeText={setName} value={username} placeholder="UserName" />
+              <Button  title ={'hey'} onPress={(id)=>updateProf(id)}/>
             </SafeAreaView>
           );
    
 }
  const styles = StyleSheet.create({
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
+		height: 40,
+		margin: 12,
+		marginTop: 25,
+		borderBottomWidth: 2
     },
   });
   export default UpdateInfo
