@@ -24,6 +24,8 @@ const Signin = ({ navigation: { navigate } }) => {
           navigate("TabNavigator");
           localStorage.setItem("email", email);
           
+
+          
         } else {
           console.log("you can not access");
         }
