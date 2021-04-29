@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import Maps from '../Maps'
 import About from '../Profile.js'
+import Settings from '../Settings'
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,18 @@ export default function TabNavigator() {
             ),
           }}
           />
+
+      {/* <Tab.Screen
+        name="Feed"
+        component={Settings}
+        options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="Settings" color={color} size={size} />
+              ),
+            }}
+            /> */}
+
     </Tab.Navigator>
         /* </NavigationContainer>  */
   );

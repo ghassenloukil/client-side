@@ -14,27 +14,7 @@ import Position from './Position.js'
 // const origin = {latitude: 37.3318456, longitude: -122.0296002};
 // const destination = {latitude: 37.771707, longitude: -122.4053769};
 const { height, width } = Dimensions.get("screen");
-const GOOGLE_API_KEY = "AIzaSyDlq2OkQ1dmOY1rPvtnvK8ZntS21TNOsAc";
-const parkingsSpots = {
-    
-     
-      
-      coordinate: {
-        latitude: 36.868,
-      longitude: 10.2404
-      
-    }, 
-      coordinate: {
-        latitude: 36.8512,
-      longitude: 10.2584
-      
-    },
-      coordinate: {
-        latitude: 36.8512,
-      longitude: 10.2584
-      
-    }}
-  
+const GOOGLE_API_KEY='pk.eyJ1IjoiZGhpYTE1IiwiYSI6ImNrbnV4c2c1ZDBoaHgyd2tnc3FqYXptZGUifQ.jZ9eAY4C-N7oduLCccII4g'
 
   
 export default class Maps extends React.Component {
@@ -157,7 +137,7 @@ export default class Maps extends React.Component {
             coordinate={{latitude: 36.8559,
                 longitude: 10.2572,}}
             title={'heyyy'}
-            description={"open 24/24"}>
+            description={'hello'}>
                 <Image
                 style={styles.tinyLogo}
                 coordinate={{
