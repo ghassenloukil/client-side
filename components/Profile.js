@@ -25,7 +25,6 @@
 
 // export default Profile
 
-
 import React from 'react';
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 import {
@@ -35,9 +34,7 @@ import {
   Text,
   TouchableRipple,
 } from 'react-native-paper';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -54,81 +51,73 @@ const Profile = () => {
               marginTop: 15,
               marginBottom: 5
             }}>Gaston Loukil</Title>
-            <Caption style={styles.caption}>11_004</Caption>
+            {/* <Caption style={styles.caption}>11_004</Caption> */}
           </View>
         </View>
       </View>
-
       <View style={styles.userInfoSection}>
+        {/* <View style={styles.row}> */}
+          {/* <Icon name="map-market-radius" style={{color="#777777"}} size={20} /> */}
+          {/* <Text style={{  marginLeft: 20 }}>Ariana,Tunisia</Text> */}
+        {/* </View> */}
+        {/* <View style={styles.row}> */}
+          {/* <Icon name="phone" style={{color="#777777"}} size={20} /> */}
+          {/* <Text style={{  marginLeft: 20 }}>53024247</Text> */}
+        {/* </View> */}
         <View style={styles.row}>
-          <Icon name="map-market-radius" color="#7777777" size={20} />
-          <Text style={{ color: "#7777777", marginLeft: 20 }}>Ariana,Tunisia</Text>
-        </View>
-
-        <View style={styles.row}>
-          <Icon name="phone" color="#7777777" size={20} />
-          <Text style={{ color: "#7777777", marginLeft: 20 }}>53024247</Text>
-        </View>
-
-        <View style={styles.row}>
-          <Icon name="email" color="#7777777" size={20} />
-          <Text style={{ color: "#7777777", marginLeft: 20 }}>gaston@gmail.com</Text>
+          {/* <Icon name="email" style={{color="#777777"}} size={20} /> */}
+          <Text style={{  marginLeft: 20 }}>gaston@gmail.com</Text>
         </View>
       </View>
-
       <View style={styles.infoBoxWrapper}>
         <View style={styles.infoBox, {
-          borderRightColor: '#dddddd',
+          borderRightColor: '#DDDDDD',
           borderRightWidth: 1
         }}>
           <Title>140 </Title>
           <Caption>points</Caption>
         </View>
-
         <View style={styles.infoBox}>
           <Title>12 </Title>
           <Caption>Orders</Caption>
         </View>
         </View>
-
         <View style={styles.menuWrapper}>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="heart-outline" color="#FF6347" size={25}/>
-              <Text >Your Favorites</Text>
+              <Text style={styles.menuItemText}>Your Favorites</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="credit-card" color="#FF6347" size={25}/>
-              <Text >Payment</Text>
+              <Text style={styles.menuItemText}>Payment</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="share-outline" color="#FF6347" size={25}/>
-              <Text >Tell Your Friends</Text>
+              <Text style={styles.menuItemText}>Tell Your Friends</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="account-check-outline" color="#FF6347" size={25}/>
-              <Text >Support</Text>
+              <Text style={styles.menuItemText}>Support</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               <Icon name="settings-outline" color="#FF6347" size={25}/>
-              <Text >Settings</Text>
+              <Text style={styles.menuItemText}>Settings</Text>
             </View>
           </TouchableRipple>
         </View>
     </SafeAreaView>
   );
 };
-
 export default Profile;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -151,9 +140,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   infoBoxWrapper: {
-    borderBottomColor: '#dddddd',
+    borderBottomColor: '#DDDDDD',
     borderBottomWidth: 1,
-    borderTopColor: '#dddddd',
+    borderTopColor: '#DDDDDD',
     borderTopWidth: 1,
     flexDirection: 'row',
     height: 100,
@@ -172,7 +161,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30, 
   },
   menuItemText: {
-    
+    // color: '#7777777',
     marginLeft: 20,
     fontWeight: '600',
     fontSize: 16,

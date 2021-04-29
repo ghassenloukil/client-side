@@ -8,6 +8,7 @@ import Signup from './components/Signup'
 import Signin from './components/Signin'
 import TabNavigator from './components/navigation/TabNavigator.js';
 // import Maps from './components/Maps'
+// import Order from  '../client-side/components/src/app';
 
 
 export default function App() {
@@ -38,7 +39,8 @@ export default function App() {
       />
     </Stack.Navigator>
   </NavigationContainer>
-  // <TabNavigator/>
+  //  <TabNavigator/>
+  // <Order/>
   );
 }
 

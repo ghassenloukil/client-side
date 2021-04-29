@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity,Image,TextInput, Alert } from 'react-native';
 import React, {useState} from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2'
+const validator = require('validator');
 
-const Signup = () => {
+const Signup = ({ navigation: { navigate } }) => {
 const [username, setUsername]= useState('')
 const [email, setEmail] = useState('')
 const [password, setPassword] = useState('')
@@ -14,12 +14,19 @@ const handleSubmit = () => {
           email: email,
           password: password
       }
+      if(!validator.isEmail(email)) return Alert.alert("Email should be a valid email",)
       axios.post('http://10.0.2.2:3000/api/ParkiZone/user/create',userToAdd)
       .then((response)=>{
-     console.log("heeloo",response);
-      }).catch((error)=>{
-          console.log(error)
-      })
+          if(response){
+              console.log("heeloo",response);
+                 Alert.alert("You're signed up successfully. Please signin to access your account.")
+                 setTimeout(()=>{navigate("Signin")}, 1500)
+                 
+          }
+    }).catch((error)=>{
+        console.log(error)
+        Alert.alert("Failed to signup")
+    })
     }
     return (
         <View style={styles.main}>
@@ -29,7 +36,7 @@ const handleSubmit = () => {
       </View>
             <TextInput placeholder="username" name="username" style={styles.row} onChangeText={username => setUsername(username)} defaultValue={username}/>
             <TextInput placeholder="email" name="email" style={styles.row} onChangeText={email => setEmail(email)} defaultValue={email}/>
-            <TextInput placeholder="password" name="password" style={styles.row} onChangeText={password => setPassword(password)} defaultValue={password}/>
+            <TextInput placeholder="password" name="password" style={styles.row} secureTextEntry={true} onChangeText={password => setPassword(password)} defaultValue={password}/>
             <View style={{alignItems: 'center', justifyContent:'center'}}>
             <TouchableOpacity style={styles.appButtonContainer}  >
              <Text style={styles.appButtonText} onPress={handleSubmit}> Signup </Text>
@@ -63,13 +70,11 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     appButtonContainer: {
-        // elevation: 8,
         backgroundColor: "transparent",
         borderRadius: 10,
         borderWidth: 2,
         borderColor: 'white',
         paddingVertical: 10,
-        // paddingHorizontal: 12,
         width: 150,
         marginRight: 10,
         marginTop: 1
