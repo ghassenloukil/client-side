@@ -81,27 +81,27 @@ export default class Maps extends React.Component {
                </View>
         )
     }
-    renderHours(id) {
-      const { hours } = this.state;
-      const availableHours = [1, 2, 3, 4, 5, 6];
+    // renderHours(id) {
+    //   const { hours } = this.state;
+    //   const availableHours = [1, 2, 3, 4, 5, 6];
   
-      return (
-        <Dropdown
-          defaultIndex={0}
-          options={availableHours}
-          style={styles.hoursDropdown}
-          defaultValue={`0${hours[id]}:00` || "01:00"}
-          dropdownStyle={styles.hoursDropdownStyle}
-          onSelect={(index, value) => this.handleHours(id, value)}
-          renderRow={option => (
-            <Text style={styles.hoursDropdownOption} >{`0${option}:00`} HOURS</Text>
+    //   return (
+    //     <Dropdown
+    //       defaultIndex={0}
+    //       options={availableHours}
+    //       style={styles.hoursDropdown}
+    //       defaultValue={`0${hours[id]}:00` || "01:00"}
+    //       dropdownStyle={styles.hoursDropdownStyle}
+    //       onSelect={(index, value) => this.handleHours(id, value)}
+    //       renderRow={option => (
+    //         <Text style={styles.hoursDropdownOption} >{`0${option}:00`} HOURS</Text>
             
-          )}
+    //       )}
           
-          renderButtonText={option => `0${option}:00`}
-        />
-      );
-    }
+    //       renderButtonText={option => `0${option}:00`}
+    //     />
+    //   );
+    // }
     render() {
       const origin= {latitude: this.state.where.lat, longitude: this.state.where.lng}
       const destination={latitude: 36.8559,longitude: 10.2572}
