@@ -14,7 +14,7 @@ export default function TabNavigator() {
       // <NavigationContainer >
 
     <Tab.Navigator
-      initialRouteName="Feed"
+      initialRouteName="Home"
       tabBarOptions={{
         activeTintColor: 'white',
         style: {backgroundColor: 'black'}
