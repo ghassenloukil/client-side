@@ -1,12 +1,11 @@
 import React from 'react'
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Home from '../Home'
 import Maps from '../Maps'
-// import Create from '../Create.js'
 import About from '../Profile.js'
+import Settings from '../Settings'
 
 const Tab = createBottomTabNavigator();
 
@@ -42,8 +41,20 @@ export default function TabNavigator() {
             ),
           }}
           />
+
+<Tab.Screen
+        name="Feed"
+        component={Settings}
+        options={{
+            tabBarLabel: 'Settings',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="home" color={color} size={size} />
+              ),
+            }}
+            />
+
     </Tab.Navigator>
-        // </NavigationContainer> 
+        /* </NavigationContainer>  */
   );
 }
 
