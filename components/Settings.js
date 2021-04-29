@@ -11,12 +11,13 @@ const UpdateInfo = ({ navigation }) => {
 	// 	name: name
 		
 	// };
-  const updateProf = () => {
-		console.log(userDetails, 'hello')
-		 axios.patch(`http://10.0.2.2:3000/api/ParkiZone/Profile/15`, 	{
-		email: email,
+  const updateProf = (id) => {
+		 axios.patch(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`, 	{
+		  email: email,
 	   	name: name
-		}).then((res) => {
+		},{headers:{
+            'Content-Type' : 'application/json',
+        }}).then((res) => {
 				console.log(res,'hello');
 			}).catch ((err)=>{
 				console.log(err, 'hello')

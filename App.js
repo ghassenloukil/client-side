@@ -11,7 +11,7 @@ import LoginGoogle from './components/GoogleLogin';
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 // import Maps from './components/Maps'
-import Order from  '../client-side/components/src/app';
+// import Order from  '../client-side/components/src/app';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -42,8 +42,8 @@ export default function App() {
 //     </Stack.Navigator>
 //   </NavigationContainer>
   // <TabNavigator/>
-    //  <Settings/>
-    <Order/>
+     <Settings/>
+    // <Order/>
   // <LoginGoogle/>
   );
 }
