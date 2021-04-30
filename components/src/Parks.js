@@ -112,7 +112,7 @@ import {
 import { movies } from './data';
 import MoviePoster from './ParkPoster';
 import MoviePopup from './ParkPopup'
-import { Actions } from 'react-native-router-flux'
+// import { Actions } from 'react-native-router-flux'
 
 export default class Movies extends Component {
   state = {

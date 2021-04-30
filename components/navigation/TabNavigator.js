@@ -41,8 +41,8 @@ export default function TabNavigator() {
             ),
           }}
           />
-
-      <Tab.Screen
+{/* 
+       <Tab.Screen
         name="Settings"
         component={Settings}
         options={{
@@ -51,7 +51,7 @@ export default function TabNavigator() {
               <MaterialCommunityIcons name="Settings" color={color} size={size} />
               ),
             }}
-            />
+            /> */}
 
     </Tab.Navigator>
         /* </NavigationContainer>  */

@@ -1,6 +1,6 @@
 import React ,{ useState }from 'react';
 import axios from 'axios'
-import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native';
+import { View, Button, StyleSheet, SafeAreaView ,TextInput,Alert } from 'react-native';
 const UpdateInfo = () => {
 	const [ email, setEmail ] = useState('');
 	const [ username, setusername ] = useState('');
@@ -18,6 +18,8 @@ const UpdateInfo = () => {
 		 axios.put(`http://10.0.2.2:3000/api/ParkiZone/Profile/${id}`, obj)
      .then((res) => {
 				console.log(res);
+        return Alert.alert("Your updates are setted");
+
 			}).catch ((err)=>{
 				console.log(err)
 			})
@@ -27,7 +29,7 @@ const UpdateInfo = () => {
             <SafeAreaView>
               <TextInput  style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
               <TextInput style={styles.input} onChangeText={setusername} value={username} placeholder="UserName" />
-              <Button title="hello" onPress={updateProf}/>
+              <Button title="update" onPress={updateProf}/>
             </SafeAreaView>
           );
    

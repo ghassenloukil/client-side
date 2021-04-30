@@ -8,8 +8,8 @@ import {
 import MapView, { Marker, Callout } from "react-native-maps";
 const { height, width } = Dimensions.get("screen");
 export default class Position extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
            
         // 
@@ -35,6 +35,7 @@ export default class Position extends React.Component {
         
     }
     render() {
+      // const { navigation } = this.props;
         return (
             <View>
                 
@@ -44,7 +45,7 @@ export default class Position extends React.Component {
                       
                 return  (
                  <MapView.Marker key={index}
-                 
+                //  onPress={navigation.navigate("Settings")}
                  coordinate={e.coordinates}
                  >
      <Image
