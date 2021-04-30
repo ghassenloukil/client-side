@@ -43,7 +43,10 @@ export default function App() {
 //   </NavigationContainer>
   // <TabNavigator/>
     //  <Settings/>
-    <Order/>
+
+    // <Order/>
+    <Profile/>
+
   // <LoginGoogle/>
   );
 }

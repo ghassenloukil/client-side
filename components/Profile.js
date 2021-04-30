@@ -10,7 +10,7 @@ import {
 } from 'react-native-paper';
 // import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Profile = ({ navigation: { navigate } }) => {
+const Profile = () => {
   const [ data, setData ] = useState([]);
 
 	const getDetails = {
@@ -46,8 +46,8 @@ const Profile = ({ navigation: { navigate } }) => {
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>{data.username}</Title>
-            <Caption style={styles.caption}>11_004</Caption>
+            }} style={styles.text}>{data.username}</Title>
+            <Caption style={styles.caption} style={styles.text}>11_004</Caption>
           </View>
         </View>
       </View>
@@ -58,11 +58,11 @@ const Profile = ({ navigation: { navigate } }) => {
         </View>
         <View style={styles.row}>
           {/* <Icon name="phone"  size={20} /> */}
-          <Text style={{  marginLeft: 20 }}>53024247</Text>
+          <Text style={{  marginLeft: 20 }} style={styles.text}>53024247</Text>
         </View>
         <View style={styles.row}>
           {/* <Icon name="email"  size={20} /> */}
-          <Text style={{ marginLeft: 20 }}>hhhrrhrh</Text>
+          <Text style={{ marginLeft: 20 }} style={styles.text}>hhhrrhrh</Text>
         </View>
       </View>
       <View style={styles.infoBoxWrapper}>
@@ -70,46 +70,47 @@ const Profile = ({ navigation: { navigate } }) => {
           borderRightColor: '#DDDDDD',
           borderRightWidth: 1
         }}>
-          <Title>140 </Title>
-          <Caption>points</Caption>
+          <Title style={styles.text}>140 </Title>
+          <Caption style={styles.text}>points</Caption>
         </View>
         <View style={styles.infoBox}>
-          <Title>12 </Title>
-          <Caption>Orders</Caption>
+          <Title style={styles.text}>12 </Title>
+          <Caption style={styles.text}>Orders</Caption>
         </View>
         </View>
         <View style={styles.menuWrapper}>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="heart-outline" color="#FF6347" size={25}/> */}
-              <Text >Your Favorites</Text>
+              <Text  style={styles.text}>Your Favorites</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="credit-card" color="#FF6347" size={25}/> */}
-              <Text >Payment</Text>
+              <Text  style={styles.text} >Payment</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="share-outline" color="#FF6347" size={25}/> */}
-              <Text >Tell Your Friends</Text>
+              <Text  style={styles.text}>Tell Your Friends</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="account-check-outline" color="#FF6347" size={25}/> */}
-              <Text >Support</Text>
+              <Text style={styles.text} >Support</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="settings-outline" color="#FF6347" size={25}/> */}
-              <Text >Settings</Text>
+              <Text style={styles.text}>Settings</Text>
             </View>
           </TouchableRipple>
-<Button title='update' onPress={()=>navigate('Settings')}/>
+{/* <Button title='update' onPress={()=>navigate('Settings')}/> */}
+<Button title='update' color ="#F9C80E"/>
         </View>
     </SafeAreaView>
   );
@@ -118,6 +119,7 @@ const Profile = ({ navigation: { navigate } }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#081845',
   },
   userInfoSection: {
     paddingHorizontal: 30,
@@ -163,5 +165,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26, 
   },
+  input: {
+		height: 40,
+		margin: 12,
+		marginTop: 25,
+		borderBottomWidth: 2
+	},
+  text:{
+    color: 'white'
+  }
 });
 export default Profile

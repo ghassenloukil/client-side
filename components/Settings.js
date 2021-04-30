@@ -1,6 +1,6 @@
 import React ,{ useState }from 'react';
 import axios from 'axios'
-import { View, Button, StyleSheet, SafeAreaView ,TextInput } from 'react-native';
+import { View, Button, StyleSheet, SafeAreaView ,TextInput ,TouchableOpacity ,Text } from 'react-native';
 const UpdateInfo = () => {
 	const [ email, setEmail ] = useState('');
 	const [ username, setusername ] = useState('');
@@ -24,19 +24,32 @@ const UpdateInfo = () => {
     // console.log(email, username);
 	};
         return (
-            <SafeAreaView>
+            <SafeAreaView style={styles.container}>
               <TextInput  style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
               <TextInput style={styles.input} onChangeText={setusername} value={username} placeholder="UserName" />
-              <Button title="hello" onPress={updateProf}/>
+              <Button  color= '#F9C80E' style={styles.btn} title="Edit" onPress={updateProf}/>
+             
             </SafeAreaView>
           );
    
 }
  const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#081845',
+    
+  },
     input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
+		height: 40,
+		margin: 12,
+		marginTop: 25,
+		borderBottomWidth: 2,
+    backgroundColor:'white'
+    },
+    btn: {
+      flex: 1,
+      backgroundColor: '#FF4F32',
+      
     },
   });
   export default UpdateInfo
