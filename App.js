@@ -13,7 +13,6 @@ import Settings from './components/Settings'
 // import Maps from './components/Maps'
 // import Order from  '../client-side/components/src/app';
 
-
 export default function App() {
   const Stack = createStackNavigator();
   return (
@@ -40,15 +39,12 @@ export default function App() {
         name="TabNavigator"
         component={TabNavigator}
       />
-      <Stack.Screen 
-      name = "Profile"
-      component={Profile}
-      />
+   
     </Stack.Navigator>
   </NavigationContainer>
   // <TabNavigator/>
-    //  <Profile/>
-     
+    //  <Settings/>
+    // <Order/>
   // <LoginGoogle/>
   );
 }

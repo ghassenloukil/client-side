@@ -1,4 +1,4 @@
-import React ,{ useState }from 'react';
+import React ,{ useState, useEffect }from 'react';
 import axios from 'axios'
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 import {
@@ -8,16 +8,13 @@ import {
   Text,
   TouchableRipple,
 } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-const Profile = ({ navigation: { navigate } }) => {
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const Profile = () => {
   const [ data, setData ] = useState([]);
-	
-	
 
 	const getDetails = {
 		data: data
-		
-		
 	};
  
   useEffect(() =>{
@@ -39,10 +36,9 @@ const Profile = ({ navigation: { navigate } }) => {
     <SafeAreaView style={styles.container}>
        
       {console.log('email',localStorage.getItem("email"))}
-       
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
-        <Button onPress={()=>{navigate('Settings')}}/>
+        {/* <Button onPress={()=>navigate('Settings')}/> */}
           <Avatar.Image
             source={{
               url: 'https://api.adorable.io/avatars/80/abott@adorable.png',

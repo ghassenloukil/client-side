@@ -21,7 +21,7 @@ const Signin = ({ navigation: { navigate } }) => {
       .then((res) => {
         if (res.data.message === "success") {
           console.log("i'm in", email);
-          navigate("TabN");
+          navigate("TabNavigator");
           localStorage.setItem("email", email);
           
         } else {
