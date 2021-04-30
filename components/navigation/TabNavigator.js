@@ -42,13 +42,13 @@ export default function TabNavigator() {
           }}
           />
 
-<Tab.Screen
-        name="Feed"
+      <Tab.Screen
+        name="Settings"
         component={Settings}
         options={{
             tabBarLabel: 'Settings',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="Settings" color={color} size={size} />
               ),
             }}
             />
