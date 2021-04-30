@@ -11,7 +11,7 @@ import TabNavigator from './components/navigation/TabNavigator.js';
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 // import Maps from './components/Maps'
-// import Order from  '../client-side/components/src/app';
+import Order from  '../client-side/components/src/Parks';
 
 export default function App() {
   const Stack = createStackNavigator();
