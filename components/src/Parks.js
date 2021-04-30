@@ -112,14 +112,14 @@ import {
 import { movies } from './data';
 import MoviePoster from './ParkPoster';
 import MoviePopup from './ParkPopup'
+// import { Actions } from 'react-native-router-flux'
 
 export default class Parks extends Component {
   state = {
     popupIsOpen: false,
-     // Day chosen by user
-     chosenDay: 0,       // choose first day by default
-     // Time chosen by user
-     chosenTime: null,
+    chosenDay: 0,       // choose first day by default
+    // Time chosen by user
+    chosenTime: null,
   }
 
   openMovie = (movie) => {
@@ -132,9 +132,8 @@ export default class Parks extends Component {
   closeMovie = () => {
     this.setState({
       popupIsOpen: false,
-       // Reset values to default ones
-       chosenDay: 0,
-       chosenTime: null,
+      chosenDay: 0,
+      chosenTime: null,
     });
   }
   chooseDay = (day) => {
@@ -148,7 +147,8 @@ export default class Parks extends Component {
       chosenTime: time,
     });
   }
-  bookTicket = () => {
+
+    bookTicket = (props) => {
     // Make sure they selected time 
     if (!this.state.chosenTime) {
       alert('Please select show time');
@@ -156,14 +156,17 @@ export default class Parks extends Component {
       // Close popup
       this.closeMovie();
       // Navigate away to Confirmation route
-      this.props.navigator.push({
-        name: 'confirmation',
-        // Generate random string
-        code: Math.random().toString(36).substring(6).toUpperCase(),
-      });
+      // this.props.navigator.push({
+      //   name: 'confirmation',
+      //   // Generate random string
+      //   code: Math.random().toString(36).substring(6).toUpperCase(),
+      // });
+      alert('Your order has been passed successfully')
     }
   }
+
   render() {
+    
     return (
       <View style={styles.container}>
         <ScrollView
@@ -172,22 +175,25 @@ export default class Parks extends Component {
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         >
-           <MoviePopup
-          movie={this.state.movie}
-          isOpen={this.state.popupIsOpen}
-          onClose={this.closeMovie}
-          chosenDay={this.state.chosenDay}
-          chosenTime={this.state.chosenTime}
-          onChooseDay={this.chooseDay}
-          onChooseTime={this.chooseTime}
-          onBook={this.bookTicket}
-        />
-          {movies.map((movie, index) => <MoviePoster
-            movie={movie}
-            onOpen={this.openMovie}
-            key={index}
-          />)}
+         
+          {movies.map((movie, index) => 
+          // <MoviePoster
+          //   movie={movie}
+          //   onOpen={this.openMovie}
+          //   key={index}
+          // />
+          "hello")}
         </ScrollView>
+        <MoviePopup
+  movie={this.state.movie}
+  isOpen={this.state.popupIsOpen}
+  onClose={this.closeMovie}
+  chosenDay={this.state.chosenDay}
+  chosenTime={this.state.chosenTime}
+  onChooseDay={this.chooseDay}
+  onChooseTime={this.chooseTime}
+  onBook={this.bookTicket}
+/>
       </View>
     );
   }

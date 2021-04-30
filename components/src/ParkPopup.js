@@ -365,104 +365,6 @@
 //     },
 //   });
 
-// import React, { Component } from 'react';
-// import {
-//   Animated,
-//   Dimensions,
-//   StyleSheet,
-//   Text,
-//   TouchableWithoutFeedback,
-//   View
-// } from 'react-native';
-
-// const { width, height } = Dimensions.get('window');
-
-// export default class MoviePopup extends Component {
-
-//   state = {
-//     position: new Animated.Value(this.props.isOpen ? 0 : height),
-//     // height: height / 2,
-//     visible: this.props.isOpen,
-//   };
-
-//   // Handle isOpen changes to either open or close popup
-//   componentWillReceiveProps(nextProps) {
-//     // isOpen prop changed to true from false
-//     if (!this.props.isOpen && nextProps.isOpen) {
-//       this.animateOpen();
-//     }
-//     // isOpen prop changed to false from true
-//     else if (this.props.isOpen && !nextProps.isOpen) {
-//       this.animateClose();
-//     }
-//   }
-
-//   // Open popup
-//   animateOpen() {
-//     // Update state first
-//     this.setState({ visible: true }, () => {
-//       // And slide up
-//       Animated.timing(
-//         this.state.position, { toValue: 0 }, {
-//           useNativeDriver: true
-//         }    // top of the screen
-//       ).start();
-//     });
-//   }
-
-//   // Close popup
-//   animateClose() {
-//     // Slide down
-//     Animated.timing(
-//       this.state.position, { toValue: height,  useNativeDriver: true }  // bottom of the screen
-//     ).start(() => this.setState({ visible: false }));
-//   }
-
-//   render() {
-//     // Render nothing if not visible
-//     if (!this.state.visible) {
-//       return null;
-//     }
-//     return (
-//       <View style={styles.container}>
-//         {/* Closes popup if user taps on semi-transparent backdrop */}
-//         <TouchableWithoutFeedback onPress={this.props.onClose}>
-//           <Animated.View style={styles.backdrop}/>
-//         </TouchableWithoutFeedback>
-//         <Animated.View
-//           style={[styles.modal, {
-//             // Animates position on the screen
-//             transform: [{ translateY: this.state.position }, { translateX: 0 }]
-//           }]}
-//         >
-//           <Text>Popup</Text>
-//         </Animated.View>
-//       </View>
-//     );
-//   }
-
-// }
-
-// const styles = StyleSheet.create({
-//   // Main container
-//   container: {
-//     ...StyleSheet.absoluteFillObject,   // fill up all screen
-//     justifyContent: 'flex-end',         // align popup at the bottom
-//     backgroundColor: 'transparent',     // transparent background
-//   },
-//   // Semi-transparent background below popup
-//   backdrop: {
-//     ...StyleSheet.absoluteFillObject,   // fill up all screen
-//     backgroundColor: 'black',
-//     opacity: 0.5,
-//   },
-//   // Popup
-//   modal: {
-//     height: height / 2,                 // take half of screen height
-//     backgroundColor: 'white',
-//   },
-// });
-
 import React, { Component, PropTypes } from 'react';
 import {
   Animated,
@@ -478,13 +380,9 @@ import {
 } from 'react-native';
 import { defaultStyles } from './styles';
 import Options from './Options';
-import Confirmation from './Confirmation';
-
-// Get screen dimensions
+// import Confirmation from './Confirmation';
 const { width, height } = Dimensions.get('window');
-// Set default popup height to 67% of screen height
 const defaultHeight = height * 0.67;
-
 export default class MoviePopup extends Component {
 
   static propTypes = {
@@ -506,17 +404,95 @@ export default class MoviePopup extends Component {
   }
 
   state = {
-    // Animates slide ups and downs when popup open or closed
-    position: new Animated.Value(this.props.isOpen ? 0 : height),
-    // Backdrop opacity
-    opacity: new Animated.Value(0),
-    // Popup height that can be changed by pulling it up or down
-    height: defaultHeight,
-    // Expanded mode with bigger poster flag
-    expanded: false,
-    // Visibility flag
-    visible: this.props.isOpen,
+     // Animates slide ups and downs when popup open or closed
+     position: new Animated.Value(this.props.isOpen ? 0 : height),
+     // Backdrop opacity
+     opacity: new Animated.Value(0),
+     // Popup height that can be changed by pulling it up or down
+     height: defaultHeight,
+     // Expanded mode with bigger poster flag
+     expanded: false,
+     // Visibility flag
+     visible: this.props.isOpen,
   };
+  _previousHeight = 0
+
+  componentWillMount() {
+    // Initialize PanResponder to handle move gestures
+    this._panResponder = PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => {
+        const { dx, dy } = gestureState;
+        // Ignore taps
+        if (dx !== 0 && dy === 0) {
+          return true;
+        }
+        return false;
+      },
+      onPanResponderGrant: (evt, gestureState) => {
+        // Store previous height before user changed it
+        this._previousHeight = this.state.height;
+      },
+      onPanResponderMove: (evt, gestureState) => {
+        // Pull delta and velocity values for y axis from gestureState
+        const { dy, vy } = gestureState;
+        // Subtract delta y from previous height to get new height
+        let newHeight = this._previousHeight - dy;
+
+        // Animate heigh change so it looks smooth
+        LayoutAnimation.easeInEaseOut();
+
+        // Switch to expanded mode if popup pulled up above 80% mark
+        if (newHeight > height - height / 5) {
+          this.setState({ expanded: true });
+        } else {
+          this.setState({ expanded: false });
+        }
+
+        // Expand to full height if pulled up rapidly
+        if (vy < -0.75) {
+          this.setState({
+            expanded: true,
+            height: height
+          });
+        }
+
+        // Close if pulled down rapidly
+        else if (vy > 0.75) {
+          this.props.onClose();
+        }
+        // Close if pulled below 75% mark of default height
+        else if (newHeight < defaultHeight * 0.75) {
+          this.props.onClose();
+        }
+        // Limit max height to screen height
+        else if (newHeight > height) {
+          this.setState({ height: height });
+        }
+        else {
+          this.setState({ height: newHeight });
+        }
+      },
+      onPanResponderTerminationRequest: (evt, gestureState) => true,
+      onPanResponderRelease: (evt, gestureState) => {
+        const { dy } = gestureState;
+        const newHeight = this._previousHeight - dy;
+
+        // Close if pulled below default height
+        if (newHeight < defaultHeight) {
+          this.props.onClose();
+        }
+
+        // Update previous height
+        this._previousHeight = this.state.height;
+      },
+      onShouldBlockNativeResponder: (evt, gestureState) => {
+        // Returns whether this component should block native components from becoming the JS
+        // responder. Returns true by default. Is currently only supported on android.
+        return true;
+      },
+    });
+  }
 
   // When user starts pulling popup previous height gets stored here
   // to help us calculate new height value during and after pulling
@@ -615,39 +591,20 @@ export default class MoviePopup extends Component {
   animateOpen() {
     // Update state first
     this.setState({ visible: true }, () => {
-      Animated.parallel([
-        // Animate opacity
-        Animated.timing(
-          this.state.opacity, { toValue: 0.5 } // semi-transparent
-        ),
-        // And slide up
-        Animated.timing(
-          this.state.position, { toValue: 0 } // top of the screen
-        ),
-      ]).start();
+      // And slide up
+      Animated.timing(
+        this.state.position, { toValue: 0, useNativeDriver: true }     // top of the screen
+      ).start();
     });
   }
 
   // Close popup
   animateClose() {
-    Animated.parallel([
-      // Animate opacity
-      Animated.timing(
-        this.state.opacity, { toValue: 0 } // transparent
-      ),
-      // Slide down
-      Animated.timing(
-        this.state.position, { toValue: height } // bottom of the screen
-      ),
-    ]).start(() => this.setState({
-      // Reset to default values
-      height: defaultHeight,
-      expanded: false,
-      visible: false,
-    }));
+    // Slide down
+    Animated.timing(
+      this.state.position, { toValue: height, useNativeDriver: true, }  // bottom of the screen
+    ).start(() => this.setState({ visible: false }));
   }
-
-  // Dynamic styles that depend on state
   getStyles = () => {
     return {
       imageContainer: this.state.expanded ? {
@@ -685,9 +642,9 @@ export default class MoviePopup extends Component {
       onChooseTime,
       onBook
     } = this.props;
+    // Render nothing if not visible
     // Pull out movie data
     const { title, genre, poster, days, times } = movie || {};
-    // Render nothing if not visible
     if (!this.state.visible) {
       return null;
     }
@@ -695,19 +652,17 @@ export default class MoviePopup extends Component {
       <View style={styles.container}>
         {/* Closes popup if user taps on semi-transparent backdrop */}
         <TouchableWithoutFeedback onPress={this.props.onClose}>
-          <Animated.View style={[styles.backdrop, { opacity: this.state.opacity }]} />
+          <Animated.View style={[styles.backdrop, { opacity: this.state.opacity }]}/>
         </TouchableWithoutFeedback>
         <Animated.View
           style={[styles.modal, {
-            // Animates height
-            height: this.state.height,
+             // Animates height
+             height: this.state.height,
             // Animates position on the screen
             transform: [{ translateY: this.state.position }, { translateX: 0 }]
           }]}
         >
-
-          {/* Content */}
-          <View style={styles.content}>
+         <View style={styles.content}>
             {/* Movie poster, title and genre */}
             <View
               style={[styles.movieContainer, this.getStyles().movieContainer]}
@@ -723,40 +678,34 @@ export default class MoviePopup extends Component {
                 <Text style={styles.genre}>{genre}</Text>
               </View>
             </View>
-
-            {/* Showtimes */}
             <View>
               {/* Day */}
               <Text style={styles.sectionHeader}>Day</Text>
               {/* TODO: Add day options here */}
               <Options
-                values={days}
-                chosen={chosenDay}
-                onChoose={onChooseDay}
-              />
+  values={days}
+  chosen={chosenDay}
+  onChoose={onChooseDay}
+/>
               {/* Time */}
               <Text style={styles.sectionHeader}>Showtime</Text>
               {/* TODO: Add show time options here */}
               <Options
-                values={times}
-                chosen={chosenTime}
-                onChoose={onChooseTime}
-              />
+  values={times}
+  chosen={chosenTime}
+  onChoose={onChooseTime}
+/>
             </View>
-
-          </View>
-
-          {/* Footer */}
-          <View style={styles.footer}>
+            </View>
+            <View style={styles.footer}>
             <TouchableHighlight
               underlayColor="#9575CD"
               style={styles.buttonContainer}
               onPress={onBook}
             >
-              <Text style={styles.button}>Book My place</Text>
+              <Text style={styles.button}>Book My Tickets</Text>
             </TouchableHighlight>
-          </View>
-
+          </View> 
         </Animated.View>
       </View>
     );
