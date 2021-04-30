@@ -30,6 +30,25 @@
 // }
 
 
+import React, { Component } from 'react';
+import {
+  Navigator,
+} from 'react-native';
+import Movies from './Parks';
+import Confirmation from './Confirmation';
+
+const RouteMapper = (route, navigator) => {
+  if (route.name === 'movies') {
+    return (
+      <Movies navigator={navigator} />
+    );
+  } else if (route.name === 'confirmation') {
+    return (
+      <Confirmation code={route.code} navigator={navigator} />
+    );
+  }
+};
+
 export default class App extends Component {
   render() {
     return (
