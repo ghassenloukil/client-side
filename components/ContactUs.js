@@ -20,7 +20,7 @@ const Contact = () => {
         
              axios.post(`http://10.0.2.2:3000/api/ParkiZone/contact/`, obj)
          .then((res) => {
-                    console.log(res);
+                    console.log(res.data);
                 }).catch ((err)=>{
                     console.log(err)
                 })
