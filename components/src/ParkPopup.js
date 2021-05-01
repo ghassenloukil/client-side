@@ -365,7 +365,8 @@
 //     },
 //   });
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Animated,
   Dimensions,
@@ -386,7 +387,7 @@ const defaultHeight = height * 0.67;
 export default class MoviePopup extends Component {
 
   static propTypes = {
-    isOpen: PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool.isR,
     // Movie object that has title, genre, poster, days and times
     movie: PropTypes.object,
     // Index of chosen day

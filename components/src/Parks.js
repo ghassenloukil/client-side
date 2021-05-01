@@ -114,7 +114,7 @@ import MoviePoster from './ParkPoster';
 import MoviePopup from './ParkPopup'
 // import { Actions } from 'react-native-router-flux'
 
-export default class Parks extends Component {
+export default class Movies extends Component {
   state = {
     popupIsOpen: false,
     chosenDay: 0,       // choose first day by default
@@ -177,12 +177,11 @@ export default class Parks extends Component {
         >
          
           {movies.map((movie, index) => 
-          // <MoviePoster
-          //   movie={movie}
-          //   onOpen={this.openMovie}
-          //   key={index}
-          // />
-          "hello")}
+          <MoviePoster
+            movie={movie}
+            onOpen={this.openMovie}
+            key={index}
+          />)}
         </ScrollView>
         <MoviePopup
   movie={this.state.movie}
