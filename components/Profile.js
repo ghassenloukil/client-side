@@ -93,7 +93,7 @@ const Profile = ({ navigation: { navigate } }) => {
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="account-check-outline" color="#FF6347" size={25}/> */}
-              <Text style={styles.text} >Support</Text>
+              <Text style={styles.text} onPress={() =>navigate("ContactUs")}>Contact us</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
@@ -105,7 +105,7 @@ const Profile = ({ navigation: { navigate } }) => {
 {/* <Button color="#F9C80E" style={styles.appButtonContainer} title='update' onPress={()=>navigate('Update')}/> */}
 {/* <Button title='update' color ="#F9C80E"/> */}
 <TouchableOpacity style={styles.appButtonContainer}  >
-             <Text style={styles.appButtonText} onPress={()=>navigate('Update')}> update </Text>
+             <Text style={styles.appButtonText} onPress={()=>navigate('Update')}> update profile </Text>
            </TouchableOpacity>
         </View>
     </SafeAreaView>
@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'white',
     paddingVertical: 10,
-    width: 150,
-    marginLeft: 140,
+    width: 180,
+    marginLeft: 120,
     marginTop: 50,
   },
   container: {
@@ -133,7 +133,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    // fontWeight: 'bold',
   },
   caption: {
     fontSize: 14,

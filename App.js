@@ -48,6 +48,10 @@ export default function App() {
         name="Order"
         component={Order}
       />
+         <Stack.Screen
+        name="ContactUs"
+        component={ContactUs}
+      />
     </Stack.Navigator>
   </NavigationContainer>
   // <TabNavigator/>

@@ -26,8 +26,8 @@ const UpdateInfo = () => {
 	};
         return (
             <SafeAreaView style={styles.container}>
-              <View style={{ width: '100%', height: '50%', marginBottom: 15 }}>
-      <Image   style={{ width: '100%', height: '100%' }} source={require('./logo.png')}/>  
+              <View style={{ width: '100%', height: '20%', marginBottom: 15,justifyContent:"center", alignItems: 'center' }}>
+      <Image   style={{ width: '30%', height: '100%' }} source={require('./logo.png')}/>  
         </View> 
               <TextInput  style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
               <TextInput style={styles.input} onChangeText={setusername} value={username} placeholder="UserName" />
@@ -66,7 +66,8 @@ const UpdateInfo = () => {
 		margin: 12,
 		marginTop: 25,
 		borderBottomWidth: 2,
-    backgroundColor:'white'
+    backgroundColor:'white',
+    fontSize: 20,
     },
     btn: {
       flex: 1,
