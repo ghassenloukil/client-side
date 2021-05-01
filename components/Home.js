@@ -10,11 +10,11 @@ const Home = ({ navigation: { navigate } }) =>{
     return (
       <View style={styles.container}>
         <View style={{alignItems: 'center', justifyContent:'center'}}>
-      <Image   style={{ width: 100, height: 150, marginTop: '1%',justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/> 
+      {/* <Image   style={{ width: 100, height: 150, marginTop: '1%',justifyContent: 'center', alignItems: 'center'}} source={require('./parki.jpg')}/>  */}
       <Text style={styles.text}>WELCOME TO PARKIZONE!</Text>
       </View>
       <View style={{ width: '100%', height: '50%', marginBottom: 15 }}>
-      <Image   style={{ width: '100%', height: '100%' }} source={require('./zone.jpg')}/>  
+      <Image   style={{ width: '100%', height: '100%' }} source={require('./logo.png')}/>  
         </View> 
       <View style={{alignItems: 'center', justifyContent:'center'}}>
       <Text style={{fontWeight: 'bold',color: '#fff',}}>IN ORDER TO USE OUR APP PLEASE LOGIN OR SIGNUP</Text>
@@ -38,7 +38,7 @@ const Home = ({ navigation: { navigate } }) =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: '#081845'
   },
   text: {
     fontSize: 20,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   appButtonContainer: {
-    backgroundColor: "transparent",
+    backgroundColor: "#F9C80E",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: 'white',

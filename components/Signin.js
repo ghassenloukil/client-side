@@ -13,7 +13,7 @@ import 'localstorage-polyfill';
 const Signin = ({ navigation: { navigate } }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//signin
+//signin-----
   const handleClick = function () {
     var obj = { email: email, password: password };
     axios
@@ -40,13 +40,13 @@ const Signin = ({ navigation: { navigate } }) => {
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Image
             style={{
-              width: 100,
+              width: 105,
               height: 150,
               marginTop: "-10%",
               justifyContent: "center",
               alignItems: "center",
             }}
-            source={require("./parki.jpg")}
+            source={require("./logo.png")}
           />
         </View>
         <View style={{ height: "100%" }}>
@@ -54,10 +54,13 @@ const Signin = ({ navigation: { navigate } }) => {
             placeholder="Email"
             style={{
               marginTop: "3%",
-              height: 35,
               borderRadius: 10,
               fontSize: 20,
               backgroundColor: "white",
+              width: 300,
+             height: 44,
+             padding: 10,
+             marginBottom: 10,
             }}
             onChangeText={(email) => setEmail(email)}
             defaultValue={email}
@@ -67,10 +70,13 @@ const Signin = ({ navigation: { navigate } }) => {
             secureTextEntry={true}
             style={{
               marginTop: "3%",
-              height: 35,
               borderRadius: 10,
               fontSize: 20,
               backgroundColor: "white",
+              width: 300,
+             height: 44,
+             padding: 10,
+             marginBottom: 10,
             }}
             onChangeText={(password) => setPassword(password)}
             defaultValue={password}
@@ -99,7 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#081845",
   },
   inputs: {
     width: "70%",
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   appButtonContainer: {
-    backgroundColor: "transparent",
+    backgroundColor: "#F9C80E",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "white",

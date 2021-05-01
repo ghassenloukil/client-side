@@ -8,8 +8,9 @@ import {
 import MapView, { Marker, Callout } from "react-native-maps";
 const { height, width } = Dimensions.get("screen");
 export default class Position extends React.Component {
-    constructor(props){
-        super(props);
+ 
+    constructor(){
+        super();
         this.state = {
            
         // 
@@ -35,17 +36,12 @@ export default class Position extends React.Component {
         
     }
     render() {
-      // const { navigation } = this.props;
         return (
             <View>
-                
-
             {this.state.parkingsSpots.map((e, index)=>{
-
-                      
                 return  (
                  <MapView.Marker key={index}
-                //  onPress={navigation.navigate("Settings")}
+                 onPress={()=>this.props.navigation("Order")}
                  coordinate={e.coordinates}
                  >
      <Image
@@ -54,13 +50,10 @@ export default class Position extends React.Component {
                        uri: 'https://www.iconpacks.net/icons/2/free-parking-sign-icon-2526-thumb.png',
                      }}
                    />
-                   
               </MapView.Marker>
                )})}
-               
              </View>
-        )
-       
+        ) 
     }
 }
 const styles = StyleSheet.create({

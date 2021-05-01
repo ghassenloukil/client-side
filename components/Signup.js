@@ -48,33 +48,60 @@ const Signup = ({ navigation: { navigate } }) => {
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Image
             style={{
-              width: 100,
+              width: 105,
               height: 150,
               marginTop: 1,
               justifyContent: "center",
               alignItems: "center",
             }}
-            source={require("./parki.jpg")}
+            source={require("./logo.png")}
           />
         </View>
         <TextInput
           placeholder="username"
           name="username"
-          style={styles.row}
+          style={{
+            marginTop: "3%",
+            borderRadius: 10,
+            fontSize: 20,
+            backgroundColor: "white",
+            width: 300,
+           height: 44,
+           padding: 10,
+           marginBottom: 10,
+          }}
           onChangeText={(username) => setUsername(username)}
           defaultValue={username}
         />
         <TextInput
           placeholder="email"
           name="email"
-          style={styles.row}
+          style={{
+            marginTop: "3%",
+            borderRadius: 10,
+            fontSize: 20,
+            backgroundColor: "white",
+            width: 300,
+           height: 44,
+           padding: 10,
+           marginBottom: 10,
+          }}
           onChangeText={(email) => setEmail(email)}
           defaultValue={email}
         />
         <TextInput
           placeholder="password"
           name="password"
-          style={styles.row}
+          style={{
+            marginTop: "3%",
+            borderRadius: 10,
+            fontSize: 20,
+            backgroundColor: "white",
+            width: 300,
+           height: 44,
+           padding: 10,
+           marginBottom: 10,
+          }}
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
           defaultValue={password}
@@ -96,7 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: "#081845",
   },
   inputs: {
     width: "70%",
@@ -114,7 +141,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   appButtonContainer: {
-    backgroundColor: "transparent",
+    backgroundColor: "#F9C80E",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "white",

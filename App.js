@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 import Settings from './components/Settings'
 // import Maps from './components/Maps'
 import Order from  '../client-side/components/src/Parks';
+import ContactUs from './components/ContactUs'
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -40,14 +41,21 @@ export default function App() {
         component={TabNavigator}
       />
        <Stack.Screen
-        name="Settings"
+        name="Update"
         component={Settings}
+      />
+       <Stack.Screen
+        name="Order"
+        component={Order}
       />
     </Stack.Navigator>
   </NavigationContainer>
   // <TabNavigator/>
-  //    <Settings/>
-  //   <Order/>
+    //  <Settings/>
+
+    // <Order/>
+    // <Profile/>
+/* <ContactUs/> */
   // <LoginGoogle/>
   );
 }
