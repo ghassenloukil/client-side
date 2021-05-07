@@ -1,5 +1,5 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
-import axios from "axios"
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+// import axios from "axios"
 import { View,Title, Button, StyleSheet, SafeAreaView ,Text,TextInput, TouchableOpacity, Image, Alert} from 'react-native';
 import React, { useState,useEffect } from 'react'
 import { PaymentView } from './ViewPayment'
@@ -8,7 +8,6 @@ import { PaymentView } from './ViewPayment'
 const PaymentScreen = () => {
 
     const [response, setResponse ] = useState()
-    const [amount, setAmout] = useState();
     const [ makePayment, setMakePayment ] = useState(false)
     const [paymentStatus, setPaymentStatus] = useState('')
 
