@@ -1,6 +1,6 @@
 import React ,{ useState, useEffect }from 'react';
 import axios from 'axios'
-import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Button, StyleSheet, SafeAreaView,TouchableOpacity } from 'react-native';
 import {
   Avatar,
   Title,
@@ -20,7 +20,7 @@ const Profile = ({ navigation: { navigate } }) => {
   useEffect(() =>{
     var email = localStorage.getItem('email')
     axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${email}`).then(response =>{
-      console.log(response.data,'fdfdfdf')
+      // console.log(response.data,'fdfdfdf')
       setData(response.data)
       localStorage.setItem("id", response.data.id)
     }).catch(error =>{
@@ -33,99 +33,107 @@ const Profile = ({ navigation: { navigate } }) => {
           
   return (
     <SafeAreaView style={styles.container}>
+      {console.log(data, "ezrethryjtruti")}
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
         {/* <Button onPress={()=>navigate('Settings')}/> */}
           <Avatar.Image
-            source={{
-              url: 'https://api.adorable.io/avatars/80/abott@adorable.png',
-            }}
-            size={80} 
+              source={require('./logo.png')}
+            size={100} 
           />
           <View style={{ marginLeft: 20 }}>
             <Title style={styles.title, {
               marginTop: 15,
               marginBottom: 5
-            }}>{data.username}</Title>
-            <Caption style={styles.caption}>11_004</Caption>
+            }} style={styles.text}> Username: {data.username} </Title>
+             <Title style={styles.title, {
+              marginTop: 15,
+              marginBottom: 5
+            }} style={styles.text}> Email: {data.email} </Title>
+            {/* <Caption style={styles.caption} style={styles.text}>11_004</Caption> */}
           </View>
-        </View>
-      </View>
-      <View style={styles.userInfoSection}>
-        <View style={styles.row}>
-          {/* <Icon name="map-market-radius"  size={20} /> */}
-          <Text style={{  marginLeft: 20 }}>{data.email}</Text>
-        </View>
-        <View style={styles.row}>
-          {/* <Icon name="phone"  size={20} /> */}
-          <Text style={{  marginLeft: 20 }}>53024247</Text>
-        </View>
-        <View style={styles.row}>
-          {/* <Icon name="email"  size={20} /> */}
-          <Text style={{ marginLeft: 20 }}>hhhrrhrh</Text>
         </View>
       </View>
       <View style={styles.infoBoxWrapper}>
         <View style={styles.infoBox, {
           borderRightColor: '#DDDDDD',
-          borderRightWidth: 1
+          // borderRightWidth: 1,
+          // borderLeftWidth: 1,
+          // marginRight: 70
         }}>
-          <Title>140 </Title>
-          <Caption>points</Caption>
         </View>
+          <View style={styles.infoBox}>
+          <Title style={styles.text}>140 </Title>
+          <Caption style={styles.text}>points</Caption>
+          </View>
         <View style={styles.infoBox}>
-          <Title>12 </Title>
-          <Caption>Orders</Caption>
+          <Title style={styles.text}>12 </Title>
+          <Caption style={styles.text}>Orders</Caption>
         </View>
         </View>
         <View style={styles.menuWrapper}>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="heart-outline" color="#FF6347" size={25}/> */}
-              <Text >Your Favorites</Text>
+              <Text  style={styles.text}>Your Favorites</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="credit-card" color="#FF6347" size={25}/> */}
-              <Text >Payment</Text>
+              <Text  style={styles.text} >Payment</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="share-outline" color="#FF6347" size={25}/> */}
-              <Text >Tell Your Friends</Text>
+              <Text  style={styles.text}>Tell Your Friends</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="account-check-outline" color="#FF6347" size={25}/> */}
-              <Text >Support</Text>
+              <Text style={styles.text} >Support</Text>
             </View>
           </TouchableRipple>
           <TouchableRipple onPress={() =>{}}>
             <View style={styles.menuItem}>
               {/* <Icon name="settings-outline" color="#FF6347" size={25}/> */}
-              <Text >Settings</Text>
+              <Text style={styles.text}>Settings</Text>
             </View>
           </TouchableRipple>
-<Button title='update' onPress={()=>navigate('Settings')}/>
+{/* <Button color="#F9C80E" style={styles.appButtonContainer} title='update' onPress={()=>navigate('Update')}/> */}
+{/* <Button title='update' color ="#F9C80E"/> */}
+<TouchableOpacity style={styles.appButtonContainer}  >
+             <Text style={styles.appButtonText} onPress={()=>navigate('Update')}> update </Text>
+           </TouchableOpacity>
         </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  appButtonContainer: {
+    backgroundColor: "#F9C80E",
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'white',
+    paddingVertical: 10,
+    width: 150,
+    marginLeft: 140,
+    marginTop: 50,
+  },
   container: {
     flex: 1,
+    backgroundColor: '#081845',
   },
   userInfoSection: {
     paddingHorizontal: 30,
     marginBottom: 25,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 20,
+    // fontWeight: 'bold',
   },
   caption: {
     fontSize: 14,
@@ -163,5 +171,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26, 
   },
+  input: {
+		height: 40,
+		margin: 12,
+		marginTop: 25,
+		borderBottomWidth: 2
+	},
+  text:{
+    color: 'white'
+  },
+  appButtonText: {
+    fontSize: 18,
+    color:"white",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  }
 });
 export default Profile

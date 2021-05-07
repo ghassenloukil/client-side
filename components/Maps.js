@@ -5,7 +5,8 @@ import {
   View,
   Dimensions,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import Dropdown from "react-native-modal-dropdown";
@@ -18,8 +19,8 @@ const GOOGLE_API_KEY='pk.eyJ1IjoiZGhpYTE1IiwiYSI6ImNrbnV4c2c1ZDBoaHgyd2tnc3FqYXp
 
   
 export default class Maps extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       ready: false,
       where: { lat: null, lng: null },
@@ -105,11 +106,10 @@ export default class Maps extends React.Component {
     render() {
       const origin= {latitude: this.state.where.lat, longitude: this.state.where.lng}
       const destination={latitude: 36.8559,longitude: 10.2572}
-
         return (
-            <View style={{backgroundColor:"black"}}>
+            <View style={{backgroundColor:"#081845"}}>
       <View style={{alignItems: 'center', justifyContent:'center'}}>
-      <Image   style={{ width: 100, height: 150, marginTop: 0}} source={require('./parki.jpg')}/> 
+      <Image   style={{ width: 110, height: 150, marginTop: -30}} source={require('./logo.png')}/> 
       </View> 
             <View style={styles.container}>
                 { !this.state.ready && (
@@ -160,9 +160,8 @@ export default class Maps extends React.Component {
                 }}
               />
          </MapView.Marker>
-         <Position/>
-                  </MapView>
-                   
+         <Position navigation={this.props.navigation.navigate}/>
+                  </MapView> 
                 )}
                 <View >
             </View>
@@ -193,10 +192,11 @@ const styles = StyleSheet.create({
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+    // height: 400
   },
   tinyLogo: {
     width: 30,
-    height: 30,
+    height: 40,
   },
   tinyLogon: {
     width: 400,

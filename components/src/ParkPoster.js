@@ -91,14 +91,15 @@ export default class MoviePoster extends Component {
     //}
     
     render() {
-        const { movie, movie: { title, genre, poster }, onOpen } = this.props;
+        const { movie, movie: { name, owner, poster,empty_places }, onOpen } = this.props;
         return (
             <TouchableOpacity style={styles.container} onPress={() => onOpen(movie)}>
                 <View style={styles.imageContainer}>
                     <Image source={{ uri: poster }} style={styles.image} resizeMethod='resize'/>
                 </View>
-                <Text style={styles.title} numberOfLines={1}>{title}</Text>
-                <Text style={styles.genre} numberOfLines={1}>{genre}</Text>
+                <Text style={styles.title} numberOfLines={1}> Parking: {name}</Text>
+                <Text style={styles.genre} numberOfLines={1}> Owner: {owner}</Text>
+                <Text style={styles.genre} numberOfLines={1}> Empty Places:{empty_places}</Text>
             </TouchableOpacity>
         );
     }
@@ -106,10 +107,10 @@ export default class MoviePoster extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      marginLeft: 10,
+      marginLeft: 47,
       marginBottom: 10,
       height: (height - 20 - 20) / rows - 10,
-      width: (width - 10) / cols - 10,
+      width: (width - 1) / cols - 1,
     },
     imageContainer: {
       flex: 1,                          // take up all available space
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     },
     genre: {
       ...defaultStyles.text,
-      color: '#BBBBBB',
+      color: '#374353',
       fontSize: 12,
       lineHeight: 14,
     },
