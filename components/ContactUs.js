@@ -8,7 +8,7 @@ import {
   Text,
   TouchableRipple,
 } from 'react-native-paper';
-
+//comment
 const Contact = () => {
     const [ email, setEmail ] = useState('');
     const [ name, setName ] = useState('');
@@ -38,7 +38,7 @@ return (
       <TextInput  style={styles.input} onChangeText={setName} value={name} placeholder="name" />
       <TextInput  style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
       <TextInput style={styles.input} onChangeText={setsubject} value={subject} placeholder="Subject" />
-      <TextInput style={styles.input} onChangeText={setmessage} value={message} placeholder="Message" />
+      <TextInput style={styles.textArea} onChangeText={setmessage} value={message} placeholder="Message" />
       {/* <Button  color= '#F9C80E' style={styles.btn} title="Edit" onPress={submitEmail}/> */}
       <TouchableOpacity style={styles.appButtonContainer}  >
              <Text style={styles.appButtonText} onPress={submitEmail}> Send </Text>
@@ -72,17 +72,29 @@ const styles = StyleSheet.create({
       
     },
       input: {
-          height: 40,
+          height: 45,
           margin: 12,
           marginTop: 25,
           borderBottomWidth: 2,
           backgroundColor:'white',
           fontSize: 20,
+          padding: 10,
+          borderRadius: 10,
       },
       btn: {
         flex: 1,
         backgroundColor: '#FF4F32',
         
       },
+      textArea: {
+        height: 150,
+        justifyContent: "flex-start",
+        backgroundColor:'white',
+        margin: 12,
+        marginTop: 25,
+        borderRadius: 10,
+        
+        
+      }
     });
 export default Contact

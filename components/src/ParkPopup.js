@@ -604,7 +604,7 @@ export default class MoviePopup extends Component {
             </View>
             <View style={styles.footer}>
             <TouchableHighlight
-              underlayColor="#9575CD"
+              underlayColor="#F9C80E"
               style={styles.buttonContainer}
               onPress={onBook}
             >
@@ -619,7 +619,7 @@ export default class MoviePopup extends Component {
 }
 
 const styles = StyleSheet.create({
-  // Main container
+  // Main container hello
   container: {
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     justifyContent: 'flex-end',         // align popup at the bottom
@@ -634,7 +634,7 @@ const styles = StyleSheet.create({
   // Popup
   modal: {
     height: height / 2,                 // take half of screen height
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFFF'
   },
   content: {
     flex: 1,
@@ -674,7 +674,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   buttonContainer: {
-    backgroundColor: '#673AB7',
+    backgroundColor: '#194769',
     borderRadius: 100,
     paddingVertical: 10,
     paddingHorizontal: 15,
