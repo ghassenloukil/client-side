@@ -383,6 +383,8 @@ import Options from './Options';
 // import Confirmation from './Confirmation';
 const { width, height } = Dimensions.get('window');
 const defaultHeight = height * 0.67;
+import axios from 'axios'
+
 export default class MoviePopup extends Component {
 
   state = {
@@ -396,10 +398,25 @@ export default class MoviePopup extends Component {
      expanded: false,
      // Visibility flag
      visible: this.props.isOpen,
+     userId: null
   };
   _previousHeight = 0
+getUser = () => {
+  var email = localStorage.getItem('email')
+  // console.log("email", email);
+    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${email}`).then(response =>{
+      // console.log(response.data,'fdfdfdf')
+      // setData(response.data)
+      // localStorage.setItem("id", response.data.id)
+      this.setState({userId: response.data.userId})
+     
+    }).catch(error =>{
+      console.log(error)
 
+    })
+}
   componentWillMount() {
+    this.getUser()
     // Initialize PanResponder to handle move gestures
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -534,6 +551,17 @@ export default class MoviePopup extends Component {
     };
   }
 
+  handleOrder = ({ navigation: { navigate } }) => {
+    const { movie , chosenDay,chosenTime } = this.props
+    const { days , times } = movie || {}
+    var obj = {date: days[chosenDay], hour: times[chosenTime], user_id:this.state.userId }
+    console.log("myId",this.state.userId,"obj",obj)
+    axios.post("http://10.0.2.2:3000/api/ParkiZone/order/create", obj).then((res) => {
+      alert("your order is passed")
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
   render() {
     const {
       movie,
@@ -543,10 +571,10 @@ export default class MoviePopup extends Component {
       onChooseTime,
       onBook
     } = this.props;
+    const { title, genre, poster, days, times } = movie || {};
     
     // Render nothing if not visible
     // Pull out movie data
-    const { title, genre, poster, days, times } = movie || {};
     if (!this.state.visible) {
       return null;
     }
@@ -589,7 +617,7 @@ export default class MoviePopup extends Component {
   values={days}
   chosen={chosenDay}
   onChoose={onChooseDay}
-  onPress={console.log("day",chosenDay)}
+  // onPress={console.log("day",days[chosenDay])}
 />
               {/* Time */}
               <Text style={styles.sectionHeader}>Showtime</Text>
@@ -598,7 +626,7 @@ export default class MoviePopup extends Component {
   values={times}
   chosen={chosenTime}
   onChoose={onChooseTime}
-  onPress={console.log("time",chosenTime)}
+  // onPress={console.log("time",chosenTime)}
 />
             </View>
             </View>
@@ -606,7 +634,7 @@ export default class MoviePopup extends Component {
             <TouchableHighlight
               underlayColor="#9575CD"
               style={styles.buttonContainer}
-              onPress={onBook}
+              onPress={this.handleOrder}
             >
               <Text style={styles.button}>Book My Tickets</Text>
             </TouchableHighlight>

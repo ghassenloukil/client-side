@@ -32,7 +32,7 @@ export default class Position extends React.Component {
         }
     }
 fetchData = () => {
-  axios.get("http://10.0.2.2:3000/api/ParkiZone/orders").then((res)=>{
+  axios.get("http://10.0.2.2:3000/api/ParkiZone/parkings").then((res)=>{
     this.setState({data: res.data})
   }).catch((err) => {
     console.log(err);

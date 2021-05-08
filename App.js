@@ -54,12 +54,17 @@ export default function App() {
       />
     </Stack.Navigator>
   </NavigationContainer>
+
   // <TabNavigator/>
+
     //  <Settings/>
 
     // <Order/>
+
     // <Profile/>
+
 /* <ContactUs/> */
+
   // <LoginGoogle/>
   );
 }
