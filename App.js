@@ -7,11 +7,13 @@ import HomeScreen from './components/Home'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
 import TabNavigator from './components/navigation/TabNavigator.js';
-import LoginGoogle from './components/GoogleLogin';
 import Profile from './components/Profile'
 import Settings from './components/Settings'
 // import Maps from './components/Maps'
 import Order from  '../client-side/components/src/Parks';
+import ContactUs from './components/ContactUs'
+import GoogleLogin from './components/GoogleLogin'
+import {PaymentScreen} from './components/Payment'
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -39,13 +41,28 @@ export default function App() {
 //         name="TabNavigator"
 //         component={TabNavigator}
 //       />
+//        <Stack.Screen
+//         name="Update"
+//         component={Settings}
+//       />
+//        <Stack.Screen
+//         name="Order"
+//         component={Order}
+//       />
+//          <Stack.Screen
+//         name="ContactUs"
+//         component={ContactUs}
+//       />
 //     </Stack.Navigator>
 //   </NavigationContainer>
   // <TabNavigator/>
     //  <Settings/>
+    // <GoogleLogin/>
 
-    // <Order/>
-    <Profile/>
+    <Order/>
+    // <PaymentScreen/>
+    // <Profile/>
+
 
   // <LoginGoogle/>
   );

@@ -101,7 +101,7 @@ import { defaultStyles } from './styles';
 
 // Colores para una transición suave cuando el usuario elige una opción
 const colorDefault = 'rgba(255, 255, 255, 1)',  // white
-    colorSelected = 'rgba(103,58,183, 1)';        // purple
+    colorSelected = '#F9C80E';        // purple
 
 export default class Options extends Component {
 

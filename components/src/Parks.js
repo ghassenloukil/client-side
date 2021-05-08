@@ -112,7 +112,7 @@ import {
 import { movies } from './data';
 import MoviePoster from './ParkPoster';
 import MoviePopup from './ParkPopup'
-import { Actions } from 'react-native-router-flux'
+// import { Actions } from 'react-native-router-flux'
 
 export default class Movies extends Component {
   state = {
@@ -199,7 +199,8 @@ export default class Movies extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,         // start below status bar
+    paddingTop: 20,  
+    backgroundColor: '#081845'       // start below status bar
   },
   scrollContent: {
     flexDirection: 'row',   // arrange posters in rows
