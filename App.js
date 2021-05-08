@@ -59,8 +59,8 @@ export default function App() {
     //  <Settings/>
     // <GoogleLogin/>
 
-    // <Order/>
-    <PaymentScreen/>
+    <Order/>
+    // <PaymentScreen/>
     // <Profile/>
 
 

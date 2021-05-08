@@ -615,7 +615,7 @@ export default class MoviePopup extends Component {
 }
 
 const styles = StyleSheet.create({
-  // Main container
+  // Main container hello
   container: {
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     justifyContent: 'flex-end',         // align popup at the bottom

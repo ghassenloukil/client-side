@@ -8,7 +8,7 @@ import {
   Text,
   TouchableRipple,
 } from 'react-native-paper';
-
+//comment
 const Contact = () => {
     const [ email, setEmail ] = useState('');
     const [ name, setName ] = useState('');
