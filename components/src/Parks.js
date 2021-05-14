@@ -167,7 +167,7 @@ export default class Movies extends Component {
     }
   }
   getParkings = () => {
-    axios.get('http://10.0.2.2:3000/api/ParkiZone/orders').then((response) => {
+    axios.get('http://10.0.2.2:3000/api/ParkiZone/parkings').then((response) => {
     this.setState({ data: response.data})
     }).catch((error) => {
       console.log(error);
@@ -216,7 +216,8 @@ export default class Movies extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,         // start below status bar
+    paddingTop: 20,  
+    // backgroundColor: '#081845'       // start below status bar
   },
   scrollContent: {
     flexDirection: 'row',   // arrange posters in rows

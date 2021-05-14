@@ -123,10 +123,11 @@ const styles = StyleSheet.create({
       ...defaultStyles.text,
       fontSize: 14,
       marginTop: 4,
+      // color: 'white'
     },
     genre: {
       ...defaultStyles.text,
-      color: '#374353',
+      // color: 'white',
       fontSize: 12,
       lineHeight: 14,
     },

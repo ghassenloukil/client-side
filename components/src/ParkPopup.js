@@ -384,6 +384,8 @@ import Options from './Options';
 // import Confirmation from './Confirmation';
 const { width, height } = Dimensions.get('window');
 const defaultHeight = height * 0.67;
+import axios from 'axios'
+
 export default class MoviePopup extends Component {
 
   static propTypes = {
@@ -415,10 +417,25 @@ export default class MoviePopup extends Component {
      expanded: false,
      // Visibility flag
      visible: this.props.isOpen,
+     userId: null
   };
   _previousHeight = 0
+getUser = () => {
+  var email = localStorage.getItem('email')
+  // console.log("email", email);
+    axios.get(`http://10.0.2.2:3000/api/ParkiZone/Profile/${email}`).then(response =>{
+      // console.log(response.data,'fdfdfdf')
+      // setData(response.data)
+      // localStorage.setItem("id", response.data.id)
+      this.setState({userId: response.data.userId})
+     
+    }).catch(error =>{
+      console.log(error)
 
+    })
+}
   componentWillMount() {
+    this.getUser()
     // Initialize PanResponder to handle move gestures
     this._panResponder = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
@@ -634,6 +651,17 @@ export default class MoviePopup extends Component {
     };
   }
 
+  handleOrder = () => {
+    const { movie , chosenDay,chosenTime } = this.props
+    const { days , times } = movie || {}
+    var obj = {date: days[chosenDay], hour: times[chosenTime], user_id:this.state.userId }
+    console.log("myId",this.state.userId,"obj",obj)
+    axios.post("http://10.0.2.2:3000/api/ParkiZone/order/create", obj).then((res) => {
+      alert("your order is passed")
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
   render() {
     const {
       movie,
@@ -643,10 +671,10 @@ export default class MoviePopup extends Component {
       onChooseTime,
       onBook
     } = this.props;
+    const { title, genre, poster, days, times } = movie || {};
     
     // Render nothing if not visible
     // Pull out movie data
-    const { title, genre, poster, days, times } = movie || {};
     if (!this.state.visible) {
       return null;
     }
@@ -689,7 +717,7 @@ export default class MoviePopup extends Component {
   values={days}
   chosen={chosenDay}
   onChoose={onChooseDay}
-  onPress={console.log("day",chosenDay)}
+  // onPress={console.log("day",days[chosenDay])}
 />
               {/* Time */}
               <Text style={styles.sectionHeader}>Showtime</Text>
@@ -698,15 +726,15 @@ export default class MoviePopup extends Component {
   values={times}
   chosen={chosenTime}
   onChoose={onChooseTime}
-  onPress={console.log("time",chosenTime)}
+  // onPress={console.log("time",chosenTime)}
 />
             </View>
             </View>
             <View style={styles.footer}>
             <TouchableHighlight
-              underlayColor="#9575CD"
+              underlayColor="#F9C80E"
               style={styles.buttonContainer}
-              onPress={onBook}
+              onPress={this.handleOrder}
             >
               <Text style={styles.button}>Book My Tickets</Text>
             </TouchableHighlight>
@@ -719,7 +747,7 @@ export default class MoviePopup extends Component {
 }
 
 const styles = StyleSheet.create({
-  // Main container
+  // Main container hello
   container: {
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     justifyContent: 'flex-end',         // align popup at the bottom
@@ -732,7 +760,8 @@ const styles = StyleSheet.create({
   },
   // Popup
   modal: {
-    backgroundColor: 'white',
+    height: height / 2,                 // take half of screen height
+    backgroundColor: '#FFFFFF'
   },
   content: {
     flex: 1,
@@ -772,7 +801,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   buttonContainer: {
-    backgroundColor: '#673AB7',
+    backgroundColor: '#194769',
     borderRadius: 100,
     paddingVertical: 10,
     paddingHorizontal: 15,
