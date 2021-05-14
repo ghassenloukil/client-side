@@ -91,15 +91,15 @@ export default class MoviePoster extends Component {
     //}
     
     render() {
-        const { movie, movie: { name, owner, poster,empty_places }, onOpen } = this.props;
+        const { movie, movie: { parkname, price, poster,emptyPlaces }, onOpen } = this.props;
         return (
             <TouchableOpacity style={styles.container} onPress={() => onOpen(movie)}>
                 <View style={styles.imageContainer}>
-                    <Image source={{ uri: poster }} style={styles.image} resizeMethod='resize'/>
+                    <Image source={{ uri: "https://www.datocms-assets.com/17742/1575299320-parking-1-4.jpg?auto=format" }} style={styles.image} resizeMethod='resize'/>
                 </View>
-                <Text style={styles.title} numberOfLines={1}> Parking: {name}</Text>
-                <Text style={styles.genre} numberOfLines={1}> Owner: {owner}</Text>
-                <Text style={styles.genre} numberOfLines={1}> Empty Places:{empty_places}</Text>
+                <Text style={styles.title} numberOfLines={1}> Parking: {parkname}</Text>
+                <Text style={styles.genre} numberOfLines={1}> Price: {price}</Text>
+                <Text style={styles.genre} numberOfLines={1}> Empty Places:{emptyPlaces}</Text>
             </TouchableOpacity>
         );
     }

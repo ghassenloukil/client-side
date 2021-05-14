@@ -111,7 +111,8 @@ import {
 } from 'react-native';
 import { movies } from './data';
 import MoviePoster from './ParkPoster';
-import MoviePopup from './ParkPopup'
+import MoviePopup from './ParkPopup';
+const axios = require('axios');
 // import { Actions } from 'react-native-router-flux'
 
 export default class Movies extends Component {
@@ -120,6 +121,7 @@ export default class Movies extends Component {
     chosenDay: 0,       // choose first day by default
     // Time chosen by user
     chosenTime: null,
+    data: []
   }
 
   openMovie = (movie) => {
@@ -164,7 +166,16 @@ export default class Movies extends Component {
       alert('Your order has been passed successfully')
     }
   }
-
+  getParkings = () => {
+    axios.get('http://10.0.2.2:3000/api/ParkiZone/orders').then((response) => {
+    this.setState({ data: response.data})
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+  componentDidMount(){
+    this.getParkings()
+  }
   render() {
     
     return (
@@ -175,16 +186,20 @@ export default class Movies extends Component {
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         >
-         
-          {movies.map((movie, index) => 
-          <MoviePoster
+         {console.log("dataaaaaaaaaaaaaaa",this.state.data)}
+          {this.state.data.map((movie, index) => <MoviePoster
             movie={movie}
             onOpen={this.openMovie}
             key={index}
           />)}
+
+
         </ScrollView>
+        
+        {movies.map((movie, index) =>
         <MoviePopup
-  movie={this.state.movie}
+        key={index}
+  movie={movie}
   isOpen={this.state.popupIsOpen}
   onClose={this.closeMovie}
   chosenDay={this.state.chosenDay}
@@ -193,6 +208,7 @@ export default class Movies extends Component {
   onChooseTime={this.chooseTime}
   onBook={this.bookTicket}
 />
+        )}
       </View>
     );
   }

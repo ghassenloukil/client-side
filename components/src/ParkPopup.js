@@ -643,6 +643,7 @@ export default class MoviePopup extends Component {
       onChooseTime,
       onBook
     } = this.props;
+    
     // Render nothing if not visible
     // Pull out movie data
     const { title, genre, poster, days, times } = movie || {};
@@ -671,6 +672,7 @@ export default class MoviePopup extends Component {
             >
               {/* Poster */}
               <View style={[styles.imageContainer, this.getStyles().imageContainer]}>
+                {console.log("posterrr",this.props.isOpen)}
                 <Image source={{ uri: poster }} style={styles.image} />
               </View>
               {/* Title and genre */}
@@ -687,6 +689,7 @@ export default class MoviePopup extends Component {
   values={days}
   chosen={chosenDay}
   onChoose={onChooseDay}
+  onPress={console.log("day",chosenDay)}
 />
               {/* Time */}
               <Text style={styles.sectionHeader}>Showtime</Text>
@@ -695,6 +698,7 @@ export default class MoviePopup extends Component {
   values={times}
   chosen={chosenTime}
   onChoose={onChooseTime}
+  onPress={console.log("time",chosenTime)}
 />
             </View>
             </View>

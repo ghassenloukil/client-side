@@ -7,43 +7,53 @@ import {
 } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 const { height, width } = Dimensions.get("screen");
+import axios from "axios"
+
 export default class Position extends React.Component {
  
     constructor(){
         super();
         this.state = {
-           
-        // 
         parkingsSpots:[
           {
             coordinates: {
             latitude: 36.868,
              longitude: 10.2404
-                
               }
           }, 
           {
             coordinates: {
               latitude: 36.8512,
             longitude: 10.2584
-            
           }
           },
-          
-        ]
-            
+        ],
+        data: [] 
         }
-        
     }
-    render() {
+fetchData = () => {
+  axios.get("http://10.0.2.2:3000/api/ParkiZone/orders").then((res)=>{
+    this.setState({data: res.data})
+  }).catch((err) => {
+    console.log(err);
+  })
+  }
+  componentWillMount() {
+    this.fetchData()
+  }
+   render() {
         return (
             <View>
-            {this.state.parkingsSpots.map((e, index)=>{
+              {/* {()=>this.fetchData()} */}
+              {/* {console.log("helo",this.state.data)} */}
+            {this.state.data.map((e, index)=> {
                 return  (
-                 <MapView.Marker key={index}
-                 onPress={()=>this.props.navigation("Order")}
-                 coordinate={e.coordinates}
-                 >
+                  <MapView.Marker key={index}
+                  onPress={()=>this.props.navigation("Order")}
+                  coordinate={{latitude: Number(e.latit) ,
+                    longitude: Number(e.long)}}
+                    >
+                   {console.log("latiiiiit",e.latit)}
      <Image
                      style={styles.tinyLogo}
                      source={{

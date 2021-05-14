@@ -1,6 +1,6 @@
 import React ,{ useState, useEffect }from 'react';
 import axios from 'axios'
-import { View, Button, StyleSheet, SafeAreaView ,TextInput} from 'react-native';
+import { View, Button, StyleSheet, SafeAreaView ,TextInput, TouchableOpacity, Image, Alert} from 'react-native';
 import {
   Avatar,
   Title,
@@ -21,7 +21,8 @@ const Contact = () => {
         
              axios.post(`http://10.0.2.2:3000/api/ParkiZone/sendemail`, obj)
          .then((res) => {
-                    console.log(res);
+                    console.log(res.data);
+                    Alert.alert("we've received your email we will respond as soon as possible")
                 }).catch ((err)=>{
                     console.log(err,"didn't works")
                 })
@@ -31,11 +32,17 @@ const Contact = () => {
 }
 return (
     <SafeAreaView style={styles.container}>
+      <View style={{ width: '100%', height: '20%', marginBottom: 15, justifyContent:"center", alignItems: 'center'}}>
+      <Image   style={{ width: '30%', height: '100%' }} source={require('./logo.png')}/>  
+        </View> 
       <TextInput  style={styles.input} onChangeText={setName} value={name} placeholder="name" />
       <TextInput  style={styles.input} onChangeText={setEmail} value={email} placeholder="email" />
       <TextInput style={styles.input} onChangeText={setsubject} value={subject} placeholder="Subject" />
       <TextInput style={styles.input} onChangeText={setmessage} value={message} placeholder="Message" />
-      <Button  color= '#F9C80E' style={styles.btn} title="Edit" onPress={submitEmail}/>
+      {/* <Button  color= '#F9C80E' style={styles.btn} title="Edit" onPress={submitEmail}/> */}
+      <TouchableOpacity style={styles.appButtonContainer}  >
+             <Text style={styles.appButtonText} onPress={submitEmail}> Send </Text>
+           </TouchableOpacity>
      
     </SafeAreaView>
   );
@@ -43,6 +50,22 @@ return (
 
 }
 const styles = StyleSheet.create({
+  appButtonContainer: {
+    backgroundColor: "#F9C80E",
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: 'white',
+    paddingVertical: 10,
+    width: 150,
+    marginLeft: 140,
+  },
+  appButtonText: {
+    fontSize: 18,
+    color:"white",
+    fontWeight: "bold",
+    alignSelf: "center",
+    textTransform: "uppercase"
+  },
     container: {
       flex: 1,
       backgroundColor: '#081845',
@@ -53,7 +76,8 @@ const styles = StyleSheet.create({
           margin: 12,
           marginTop: 25,
           borderBottomWidth: 2,
-      backgroundColor:'white'
+          backgroundColor:'white',
+          fontSize: 20,
       },
       btn: {
         flex: 1,
