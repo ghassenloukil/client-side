@@ -417,7 +417,8 @@ export default class MoviePopup extends Component {
      expanded: false,
      // Visibility flag
      visible: this.props.isOpen,
-     userId: null
+     userId: null,
+     parkId: null,
   };
   _previousHeight = 0
 getUser = () => {
@@ -654,8 +655,8 @@ getUser = () => {
   handleOrder = () => {
     const { movie , chosenDay,chosenTime } = this.props
     const { days , times } = movie || {}
-    var obj = {date: days[chosenDay], hour: times[chosenTime], user_id:this.state.userId }
-    console.log("myId",this.state.userId,"obj",obj)
+    var obj = {date: days[chosenDay], hour: times[chosenTime], user_id:this.state.userId, parking_id: this.state.parkId }
+    console.log("myId",this.state.userId,"parkId",this.state.parkId, "obj",obj)
     axios.post("http://10.0.2.2:3000/api/ParkiZone/order/create", obj).then((res) => {
       alert("your order is passed")
     }).catch((err) => {

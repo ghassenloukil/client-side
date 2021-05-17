@@ -89,6 +89,28 @@ export default class MoviePoster extends Component {
         // Called when user taps on a poster
         //Open: PropTypes.func.isRequired,
     //}
+   
+  
+    state = {
+      parkId: null,
+       parkname: "",
+       totalPlaces: 0,
+       emptyPlaces: 0,
+       price: 0,
+       long: 0,
+       latit: 0
+    };
+    createPark = () => {
+      
+      
+      var obj = {parking_id: this.state.parkId,parkname:this.state.parkname, totalPlaces:this.state.totalPlaces, emptyPlaces:this.state.emptyPlaces, price: this.state.price, long:this.state.long, latit:this.state.latit}
+      console.log("parkId",this.state.parkId, "obj",obj)
+      axios.post("http://10.0.2.2:3000/api/ParkiZone/parking/create'", obj).then((res) => {
+        alert("your park is created")
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
     
     render() {
         const { movie, movie: { parkname, price, poster,emptyPlaces }, onOpen } = this.props;
